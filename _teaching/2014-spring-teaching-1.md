@@ -1,6 +1,6 @@
 ---
 title: "Teaching"
-collection: teaching
+collection: Data Mining
 type: "Undergraduate course"
 permalink: /teaching/2018-spring-teaching
 venue: "Foshan University, "
