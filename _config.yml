@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Yang Chin‘s homepage"
+title                    : "Yang Chin/ 秦洋"
 title_separator          : "-"
 name                     : &name "Yang Chin"
 description              : &description "personal description"
@@ -80,12 +80,12 @@ analytics:
 
 # Site Author
 author:
-  name             : "Yang Chin（秦洋）"
+  name             : "Yang Chin"
   avatar           : "profile.png"
-  bio              : "Your biography for the left-hand sidebar"
-  location         : "Sichuan China"
+  bio              : "Second-year master student at MUST"
+  location         : "Macau SAR"
   employer         :
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : # "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : "http://yourfullgooglescholarurl.com"
   email            : "yangqinbob@gmail.com"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
