@@ -4,7 +4,7 @@ collection: Data Mining
 type: "Undergraduate course"
 permalink: /_teaching/2018-spring-teaching
 venue: "Foshan University, "
-date: 2018-05
+date: 2018-5-27
 location: "Foshan, China"
 ---
 
