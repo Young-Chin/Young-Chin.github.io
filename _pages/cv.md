@@ -16,7 +16,7 @@ Education
 
 Work experience
 ======
-* 2022~now: Research Intern
+* 2022~Now: Research Intern
   * Zhuhai UM Research Institute of Science and  Technology.
   * Research Area: Generated Image Detection, Advanced AIGC technology, and AI Security.
   * Supervisor: Prof. Jinyu Tian and Prof. Yuanyan Tang
