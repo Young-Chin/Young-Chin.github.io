@@ -11,16 +11,16 @@ redirect_from:
 
 Education
 ======
-* B.S. in Data Science and Big Data technology, Foshan University, 2022
-* M.S. in Applied Mathematics, Macau University of Science and Technology, 2024 (expected)
+* B.S. in Data Science and Big Data Technology, Foshan University, 2022
+* M.S. in Applied Mathematics and Data Science, MUST, 2024(expected)
 
 Work experience
 ======
-* Fall 2022: Research Intern
-  * Zhuhai UM Research Institute of Science and  University
-  * Duties included: Generated Image Detection, Advanced AIGC technology, and AI Security.
+* 2022~now: Research Intern
+  * Zhuhai UM Research Institute of Science and  Technology.
+  * Research Area: Generated Image Detection, Advanced AIGC technology, and AI Security.
   * Supervisor: Prof. Jinyu Tian and Prof. Yuanyan Tang
 
 Service and leadership
 ======
-* Currently leading the MAPS project as one of the key founders.
+* Currently leading the MAPS project as a key founder.
