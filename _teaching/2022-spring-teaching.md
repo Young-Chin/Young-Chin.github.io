@@ -1,5 +1,5 @@
 ---
-title: "Teaching"
+title: "Teaching Assistant"
 collection: Data Mining
 type: "Data Mining"
 permalink: /teaching/2022-spring-teaching
