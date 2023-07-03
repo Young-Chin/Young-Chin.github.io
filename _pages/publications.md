@@ -1,7 +1,7 @@
 ---
 layout: archive
 title: "Publications"
-permalink: /publications/
+permalink: /publications/Comingsoon.md
 author_profile: true
 ---
 
