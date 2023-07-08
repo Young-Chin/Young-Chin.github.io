@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "    "
+title: "Bio"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
- I am a second-year M.Sc student at [MUST](https://www.must.edu.mo), School of Computer Science and Engineering, advised by Prof. Jinyu Tian. I obtained my bachelor degree from Foshan University, advised by Prof. Chuntao Jiang.
+ I am a second-year M.Sc student at [MUST](https://www.must.edu.mo), SCSE, Applied Mathematics and Data Science, advised by Prof. Jinyu Tian. I obtained my bachelor degree in Data Science and Big Data Technology from [Foshan University](https://www.fosu.edu.cn), advised by Prof. Chuntao Jiang.
 
 Research Interests
 ======
