@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
- I am a second-year M.Sc student at [MUST](https://www.must.edu.mo), SCSE, Applied Mathematics and Data Science, advised by Prof. [Jinyu Tian](https://www.must.edu.mo/scse/staff/tianjinyu). I obtained my bachelor degree in Data Science and Big Data Technology from [Foshan University](https://www.fosu.edu.cn), advised by Prof. Chuntao Jiang.
+ I am a second-year M.Sc student at [MUST](https://www.must.edu.mo), SCSE, Applied Mathematics and Data Science, advised by Prof. [Jinyu Tian](https://www.must.edu.mo/scse/staff/tianjinyu). I obtained my bachelor degree in Data Science and Big Data Technology from [Foshan University](https://www.fosu.edu.cn).
 
 Research Interests
 ======
