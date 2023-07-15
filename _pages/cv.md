@@ -19,7 +19,7 @@ Experience
 * 2022~Now: Research Intern
   * Zhuhai UM Research Institute of Science and  Technology.
   * Research Area: Systhntic Image Detection, Advanced AIGC technology, and AI Security.
-  * Supervisor: Prof. [Jinyu Tian](https://www.must.edu.mo/scse/staff/tianjinyu) and [Prof. Yuanyan Tang](https://baike.baidu.com/item/唐远炎/314403)
+  * Supervisor: Prof. [Jinyu Tian](https://www.must.edu.mo/scse/staff/tianjinyu) and Prof. [Yuanyan Tang](https://www.fst.um.edu.mo/personal/yytang/)
 
 Leadership
 ======
