@@ -1,0 +1,258 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{nameref}
+\usepackage{thmtools}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usetikzlibrary{positioning, shapes.geometric}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+
+\title{\includegraphics[width=1\textwidth]{logo-name.png}\\[4em]
+\textbf{\Huge Simplex Method }\\[6em]}
+\author{Yang Chin (2220023347)\thanks{School of Computer Science and Engineering,\newline \indent \indent Macau University of Science and Technology} \and }
+
+\begin{document}
+	\maketitle
+	\clearpage
+\section{Simplex Method}
+	\subsection{Problem Description}
+	It's a common problem for factories to figure out how to arrange the production with different technology consumption with limited resources, so that the final profit is maximized.In mathematical optimization, \textit{Dantzig}'s \textit{Simplex algorithm} is a popular algorithm for such linear programming.\\
+	Simply, we could give a simple example of such LP problem as (1).
+	
+	\begin{equation}
+	\begin{aligned}
+	\max \ z = x_1+x_2 \\
+	\text{s.t.}
+	\left\{
+		\begin{array}{lr}
+		2x_1+x_2 \leq  12 \\
+		x_1+2x_2 \leq  9\\
+		x_1,x_2  \geq  0
+		\end{array}
+	\right.\\
+	\end{aligned}
+	\end{equation}\\
+	\indent As the specific LP problem depicted above, we could solve this problem by \textit{Graphical method}. Reminding the procedure of the \textit{Graphical method}, we always directly draw the plot of each constraint considered as an equation as Figure.1 shown.\label{Fig.1}
+	
+	\begin{figure}[h]
+	\centering 
+	\includegraphics[width=0.5\textwidth]{pics/kexingyu.jpg}
+	\caption{The plot of the constraint in (1).} 
+	\label{Fig.1}
+	\end{figure}
+
+	In fact, when solving the LP problem, we always add some slack variables to change this non-equational constraint into equational constraint. And this is part of the standard of solving LP problem. The LP problem could be constructed as a standard form like (2). 
+	$$\text{max} \ z = c_1x_1+c_2x_2+...+c_nx_n$$	
+	\begin{equation}
+	\begin{aligned}
+	\text{s.t.}\ 
+	\left\{
+		\begin{array}{lr}
+		a_{11}x_1+a_{12}x_2+...+a_{1n}x_{n} = b_1 \\
+		a_{21}x_1+a_{22}x_2+...+a_{2n}x_{n} = b_2\\
+		\hspace{38mm} \vdots \\
+		a_{m1}x_1+a_{m2}x_2+...+a_{mn}x_{n} = b_m\\
+		x_1,x_2,...,x_n  \geq  0
+		\end{array}
+	\right.\\
+	\end{aligned}
+	\end{equation}
+	
+Where the $z$ is the profit in total, the $c_i(i=1,2,...,p)$ are the value coefficients, $x_i(i=1,2,...,p)$ are the number of production, $a_{ij}(i=1,2,...,m; j=1,2,...,p)$ are the technical coefficients and $b_i(i=1,2,...,m)$ are the limitation of resource.\\
+Alternatively, we could transform the canonical form into more specific form as (3) or vector form as (4).
+
+	\begin{equation}
+	\begin{aligned}
+		\max \ z &= c^Tx \\
+		\text{s.t.}\ Ax &= b \\ 
+		x &\geq 0
+	\end{aligned}
+	\end{equation}\\
+\indent Where the $z$ is the profit in total, the $c^T=(c_1,c_2,...,c_n)^T$ are the value coefficients, $x=(x_1,x_2,...,x_n)$ are the number of production, $A$ is a $p\times n$ matrix representing the technical coefficients and $b=(b_1, b_1,...,b_n)$ are the limitation of resource.\\
+
+	$$\text{max} \sum_{i=1}^{n}{c_ix_i}=z$$
+	\begin{equation}
+	\begin{aligned}
+	\text{s.t.}
+	\left\{
+	\begin{array}{lr}
+		\sum_{i=1}^{n}{x_ip_i} = b\\
+		{x_i \geq 0, i=1,2,...,n}
+	\end{array}
+	\right.
+	\end{aligned}
+	\end{equation}
+
+	\subsection{Idea and Solution}
+	Reminding the solving process of LP problem above, we could transform these constraint into hyperplane, and then search for the optimal solution trough panning the objective function in the space enclosed by the hyperplane(In fact, the simplex is a convex package of $N+1$ vertices in $N$ dimensions convex packets of vertices). Through such example of LP problem, you'll find that he optimal solution to the LP problem always located on a vertex. In other words, we could always find the optimal solution by iterating over all vertices. Actually, we have some faster and effective methods to find the optimal solution rather than iteration over all $e.g.$ simplex method, interior point method, ellip-soid method and Karmarkar's algorithm. Here, for \textit{Simplex method}, starting from an initial vertex, iterate to find the adjacent better vertex until the optimal solution is found as Figure.2. \label{Fig.2}
+	
+	\begin{figure}[h]
+	\centering 
+	\includegraphics[width=0.6\textwidth]{pics/simplex}
+	\caption{The idea of Simplex method.} 
+	\label{Fig.2}
+	\end{figure}\\
+	Now, we have realized the idea of \textit{Simple method}. Then, we could take a further step to the definition of the solving process. The matrix $A$ is the coefficient matrix of constraint as know as technical coefficient matrix. According to the definition of LP problem, we know that the coefficient matrix should be full rank in rows, which means $Rank(A)=m$ in a $m \times n$ matrix. Therefore, we could extract $m$ columns to form a matrix of $m \times m$ named \textit{Basis} denoted by $B$. And, the matrix of $m \times (n-m)$ consisted of left columns named \textit{Non-basis} denoted by $N$. Respectively, the corresponding variables called \textit{Basic variables} and \textit{Non-basic variables}.\\
+	
+	\begin{center}
+	$A = [B,N] = $
+	\begin{bmatrix}
+		a_{11}  & \cdots & a_{1m} & a_{1,m+1} & \cdots & a_{1,n} \\
+		a_{21}  & \cdots & a_{2m} & a_{2,m+1} & \cdots & a_{2,n} \\
+		\vdots  & \ddots & \vdots & \vdots & \ddots & \vdots \\
+		a_{m1}  & \cdots & a_{mm} & a_{m,m+1} & \cdots & a_{m,n} \\
+	\end{bmatrix}
+	\end{center}\\
+	
+	\indent After changing the order of columns without affecting the constraints, we could transform $B$ into an identity matrix using elementary transformation on $(A|b)$. By doing so, it's easy for us to calculate the solution of this set of equations through making all the Non-basic variables equal to zero and we called the $x^{(0)}=(x_1,\cdots,x_m,0,\cdots,0)^T$ as \textit{Basic solution}. However, it not satisfy the constraints completely and just make the equation constraints satisfied cause it's passible to exist non-negative variables. Hence, if $x_1,x_2,\cdots,x_m \geq 0$,  the solution satisfy the constraints completely and we called it the \textit{Basic feasible solution}. \\
+		$$Ax=b $$
+		$$[B\ N]x =b $$
+		$$Bx_B+Nx_N =b $$
+	
+	Let $ x_N=(0,\cdots,0)^T$, we have
+	
+	$$Bx_B =b$$
+	$$\because Rank(B_x) =m $$
+	$$\therefore x_B =B^{-1}b$$
+	$$x_B =(x_1,x_2,\cdots, x_m)^T$$
+	$$x^{(0)} =(x_1,\cdots, x_m,0,\cdots,0)^T$$
+	
+	Where $x^{(0)}$ is the basic solution, and if $x_1,x_2,\cdots,x_m \geq 0$, then $x^{(0)}$ becomes the basic feasible solution.
+	
+	In fact, the search space of \textit{Simplex method} is the space of \textit{Basic feasible solution}, which means we could find the optimal solution from these \textit{basic feasible solutions} if it exists.The connection among \textit{feasible solution, infeasible solution, basic solution }and \textit{basic feasible solution} is shown as Figure.3.\label{Fig.3}
+	
+	\begin{figure}[h]
+	\centering 
+	\includegraphics[width=0.6\textwidth]{pics/bfs}
+	\caption{The connection of different solution.} 
+	\label{Fig.3}
+	\end{figure}\\
+	
+	\subsection{Derivation Process}
+	\indent Perhaps, we could cauculate the \textit{basic feasible solutions} and literate them to find the optimal solution. However, two questions were come up with, how to search and when to stop.\textit{Simplex method} is to calculate the adjacent vertexes and choose more optimal vertex until objective function stop increasing.  And then, we'll show the derivation process. 
+\subsubsection{Basis Changing}
+	For the first question, our target is to find out a better adjacent vertex.Assume that $A=[p_1,p_2,\cdots,p_m,p_{m+1},\cdots,p_j,\cdots,p_n],\ B=[p_1,p_2,\cdots,p_m]$, $N = [p_{m+1},\cdots,p_j,\cdots,p_n]$, $x_N=(x_{m+1},x_{m+2},\cdots,x_n)^T=(0,0,\cdots,0)^T$.
+	
+	\begin{equation}
+			p_j&=\sum^m_{i=1}a_{ij}p_i
+	\end{equation}
+	
+	\begin{equation}
+			p_j&-\sum^m_{i=1}a_{ij}p_i=0
+	\end{equation}
+	
+	\begin{equation}
+		\theta(p_j-&\sum^m_{i=1}a_{ij}p_i)=0\ (\theta>0)
+	\end{equation}
+	\indent With equation in (4) and (9), we have
+	\begin{equation}
+		\left\{
+		\begin{array}{ll}
+			\theta(p_j-\sum^m_{i=1}a_{ij}p_i)=0 \\
+			\sum^m_{i=1}x_i^{(0)}p_i=b
+		\end{array}
+		\right.
+	\end{equation}
+	
+	\begin{equation}
+		\sum^m_{i=1}(x_i^{(0)}-\theta a_{ij})p_i+\theta p_j=b
+	\end{equation}
+	
+	\begin{equation}
+		\sum^m_{i=1}x_i^{(0)}p_i+\sum^n_{j=m+1}x_jp_j=b \\
+	\end{equation}
+\indent Because of $x_N=(x_{m+1}^{(0)},x_{m+2},\cdots,x_n)^T=(0,0,\cdots,0)^T$, we have
+	\begin{equation}
+		\sum^m_{i=1}x_i^{(0)}p_i=b
+	\end{equation}
+\indent Which means that the the original equation constraints (13) could be represented by new coefficients and variables like (11). Specifically, the initial vertex could change into other adjacent vertex after changing only one pair of basis. Although the original basic feasible solution $x^{(0)}$ becomes other solution $x^{(1)}$, we need to make it satisfy the basic and feasible conditions so that it could be one of the vertexes in basic feasible space.
+
+	$$x^{(1)}=(x_1^{(0)}-\theta a_{1j},x_2^{(0)}-\theta a_{2j},\cdots,x_m^{(0)}-\theta a_{mj},0,\cdots,\theta,\cdots,0)^T$$
+	\begin{equation}
+	\text{basic and feasible}
+		\left\{
+		\begin{array}{ll}
+			p_1,\cdots,p_j,\cdots,p_m \to \text{linearly independent} \\
+			x_i^{(0)}-\theta a_{ij} \geq 0
+		\end{array}
+		\right.
+	\end{equation}
+	
+	Let's prove the feasible condition first. As previously defined, we have $x_i^{(0)} \geq 0$ and $\theta > 0$, so we'll discuss the condition of $a_{ij}$.
+	\begin{equation}
+		x_i^{(0)}-\theta a_{ij} \geq 0
+	\end{equation}
+
+(1) When $a_{ij} \leq 0$, the inequality (13) holds constantly and the $x^{(1)}$ could be $+\infty$ named \textit{Boundless Solutions}. \\
+\indent(2) When $a_{ij} > 0$, we have
+	\begin{equation}
+		\frac{x_i^{(0)}}{a_{ij}} \geq \theta
+	\end{equation}
+	\indent If we want the inequity (14) to be held constantly, then we have
+	\begin{equation}
+		\theta=\min\left\{ \frac{x_i^{(0)}}{a_{ij}}\bigg|a_{ij}>0\right\}
+		=\frac{x_r^{(0)}}{a_{rj}}
+	\end{equation} 
+\indent\textit{Here, we assume that the $r$-th one is the minimal one.}\\
+	\indent Above all, if we want make (13) hold constantly, we just need satisfy (15), which achieves the feasible condition. \\
+	\indent On the other hand, to prove the new solution $x^{(1)}$ is a basic solution, we just need to prove the responding coefficients are basis. In fact, there are a lot of approach to prove it. Here, we are going to prove the new set of vectors are linearly independent.\\
+	\begin{equation}
+	\because |p_1,p_2,\cdots,p_{r-1},p_r,p_{r+1},\cdots,p_m| \neq 0		
+	\end{equation}
+	\begin{equation}
+		 p_j&=\sum^m_{i=1}a_{ij}p_i
+	\end{equation}
+	and because of (15), we know that
+	\begin{equation}
+		&a_{rj} \neq 0
+	\end{equation}
+	\begin{equation}
+		\therefore [p_1,p_2,\cdots,p_{r-1},p_j,p_{r+1},\cdots,p_m]\text{ are linearly independent}
+	\end{equation}
+	Therefore, we prove that the new basis and it's corresponding solution satisfied the basic and feasible condition.
+	$$B = [p_1,p_2,\cdots,p_{r-1},p_j,p_{r+1},\cdots,p_m]$$
+	$$x^{(1)}=(x_1^{(0)}-\theta a_{1j},x_2^{(0)}-\theta a_{2j},\cdots,x_m^{(0)}-\theta a_{mj},0,\cdots,\theta,\cdots,0)^T$$
+	\subsubsection{Optimal Test}
+	\indent It's much easier for us to handle the second question after solving the first one. For the question \textit{when to stop}, the objective function gives everything. Our optimal target is the maximize the profit $z$ and it's initiative to consider the change of increment when the current vertex jumps to the next vertex. Then, we'll prove and show the detail about it.\\
+	As we proved above, we have find the new adjacent vertex $x^{(1)}$ by changing the basic based on $x^{(0)}$.
+	$$x^{(0)}=(x_1,x_2,\cdots,x_m,0,\cdots,0)^T$$
+	$$\to x^{(1)}=(x_1^{(0)}-\theta a_{1j},x_2^{(0)}-\theta a_{2j},\cdots,x_m^{(0)}-\theta a_{mj},0,\cdots,\theta,\cdots,0)^T$$
+	\indent Looking back the objective function, we have
+	\begin{equation}
+		z=\sum_{i=1}^mc_ix_i
+	\end{equation}
+	\indent Take $x^{(0)}$ and $x^{(1)}$ into (20) respectively, we have
+	\begin{equation}
+		z^{(0)}=\sum_{i=1}^mc_ix_i^0
+	\end{equation}
+	\begin{equation}
+	\begin{align}
+		z^{(1)}&=\sum_{i=1}^mc_ix_i^1 \\
+		&=\sum_{i=1}^mc_i(x_i^1-\theta a_{ij})+c_j\theta \\
+		&=\sum_{i=1}^mc_ix_i^1+\theta (c_j-\sum_{i=1}^mc_ia_{ij}) \\
+		&=z^{(0)}+\theta(c_j-\sum_{i=1}^mc_ia_{ij})
+	\end{align}
+	\end{equation}
+	\indent The $\theta(c_j-\sum_{i=1}^m c_i a_{ij})$ is the increment of basic changing every time, which we called \textit{optimality test} denoted as $\delta_j$. And we could give the general form as follow.
+	\begin{equation}
+	\begin{align}
+		z^{(k+1)} &= z^{(k)}+\theta(c_j-\sum_{i=1}^mc_ia_{ij}) \\
+		\delta_j &= c_j-\sum_{i=1}^mc_ia_{ij}
+	\end{align}
+	\end{equation}
+	\indent Here, we give the solutions with different $\delta_j$.\\
+	(1) If $\delta_j< 0$, the LP problem has only optimal solution $x^{(k)}$ and the corresponding optimal value $z^{(k)}$.\\
+	(2) If $\delta_j= 0$, the the LP problem has infinite number of optimal solution, which are the points on the line between $x^{(k)}$ and $x^{(k+1)}$.\\
+	(3) If $\delta_j> 0$, the current solution $x^{(k+1)}$ is not the optimal solution.\\
+
+\end{document}
