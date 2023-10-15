@@ -22,5 +22,5 @@ Research Interests
 
 News
 ======
-\[June 2023\] Our Project named MAPS has won the Winner Award(Top3) of [The 8th Guangdong-Hong Kong-Macao-Greater Bay Area IT Application Development Competition 2023 Macau Sub-Competition](https://www.aidit.org/registration/732).
+\[June 2023\] Our Project named MAPS has won the Winner Award(Top3) of [The 8th Guangdong-Hong Kong-Macao-Greater Bay Area IT Application Development Competition 2023 Macau Sub-Competition](https://www.aidit.org/registration/732).\\
 \[Oct 2023\] Our Project named MAPS has advanced the national competition of [The 9th China International College Students' "Internet+" Innovation and Entrepreneurship Competition](https://cy.ncss.cn/en/). 
