@@ -17,10 +17,12 @@ Research Interests
 ======
 - AIGC Detection
 - Diffusion/Score-based Generative Model
-- AI Security and Privacy
+- AI Security and Forensics
 - Smart City and its Applications
 
 News
 ======
-\[June 2023\] Our Project named MAPS has won the Winner Award(Top3) of [The 8th Guangdong-Hong Kong-Macao-Greater Bay Area IT Application Development Competition 2023 Macau Sub-Competition](https://www.aidit.org/registration/732).\\
-\[Oct 2023\] Our Project named MAPS has advanced the national competition of [The 9th China International College Students' "Internet+" Innovation and Entrepreneurship Competition](https://cy.ncss.cn/en/). 
+\[Nov 2023\] I was honored to be awarded the [YuanGuang Software Scholarship 2023](https://www.must.edu.mo/student-affairs-office/student-services/scholarships/company) (only 7 postgraduates in MUST). Thanks for all!
+\[Oct 2023\] Our project MAPS has advanced the national competition of [The 9th China International College Students' "Internet+" Innovation and Entrepreneurship Competition](https://cy.ncss.cn/en/). \\
+\[June 2023\] Our Project named MAPS has won the Winner Award(Top3) of [The 8th Guangdong-Hong Kong-Macao-Greater Bay Area IT Application Development Competition 2023 Macau Sub-Competition](https://www.aidit.org/registration/732).
+
