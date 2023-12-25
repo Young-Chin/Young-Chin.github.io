@@ -15,9 +15,9 @@ redirect_from:
 
 Research Interests
 ======
-- AIGC Detection
-- Diffusion/Score-based Generative Model
-- AI Security and Forensics
+- AIGC and Its Applications
+- Diffusion-based Generative Models
+- AI Security and Multimedia Forensics
 - Smart City and its Applications
 
 News
