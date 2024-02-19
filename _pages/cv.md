@@ -18,7 +18,7 @@ Experience
 ======
 * 2023/2~now: AIGC Intern
   * AFS RuanNiu Sci&tech, HitPaw group.
-  * Focus on the AIGC area, especially on vision generation.\
+  * Focus on the AIGC area, especially on vision generation.
   
 * 2022~2023: Research Intern
   * Zhuhai UM Research Institute of Science and  Technology.
