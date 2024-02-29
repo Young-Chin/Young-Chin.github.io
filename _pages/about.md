@@ -9,9 +9,9 @@ redirect_from:
 ---
 
  I am a second-year M.Sc student at Macau University of Science and Technology ([MUST](https://www.must.edu.mo)), SCSE, majoring in Applied Mathematics and Data Science, advised by [Prof. Jinyu Tian](https://www.must.edu.mo/scse/staff/tianjinyu). <br>
- I obtained my bachelor degree in Data Science and Big Data Technology from [Foshan University](https://www.fosu.edu.cn). Currently, I am working on the research topic of **Synthetic Image Detection**, supervised by Prof. Jinyu Tian and [Prof. Yuanyan Tang](https://www.fst.um.edu.mo/personal/yytang/) in [ZUMRI](http://www.zumri.cn). 
+ I obtained my bachelor's degree in Data Science and Big Data Technology from [Foshan University](https://www.fosu.edu.cn). Currently, I am working on the research topic of **Synthetic Image Detection** and the applied topic of **AIGC(vision generation)**. 
  
- **I am also looking for a Ph.D. position in 2024 fall.**
+ **I am also looking for an interesting and challenging position both in the company and college in 2024 fall.**
 
 Research Interests
 ======
@@ -22,7 +22,7 @@ Research Interests
 
 News
 ======
-\[Feb 2024\] I will join the HitPaw team as an AI Creativity Intern for vision generation. \\
+\[Feb 2024\] I will join the **软牛科技** as an **AI Intern** for vision generation. \\
 \[Nov 2023\] **MAPS** has won the **Bronze Award** and **Best Application Award** in [The 8th Guangdong-Hong Kong-Macao-Greater Bay Area IT Application Development Competition](https://www.aidit.org/registration/732), which will be posted on China Innovation and Entrepreneurship Fair. \\
 \[Nov 2023\] I was honored to be awarded the [YuanGuang Software Scholarship 2023](https://www.must.edu.mo/student-affairs-office/student-services/scholarships/company) (only 7 postgraduates in MUST). Thanks for all! \\
 \[Oct 2023\] Our project MAPS has advanced the national competition of [The 9th China International College Students' "Internet+" Innovation and Entrepreneurship Competition](https://cy.ncss.cn/en/). \\
