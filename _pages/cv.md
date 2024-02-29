@@ -16,8 +16,8 @@ Education
 
 Experience
 ======
-* 2023/2~now: AIGC Intern
-  * AFS RuanNiu Sci&tech, HitPaw group.
+* 2023/2~now: AI Intern
+  * 软牛科技, Digital AI group.
   * Focus on the AIGC area, especially on vision generation.
   
 * 2022~2023: Research Intern
