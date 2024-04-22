@@ -8,8 +8,7 @@ redirect_from:
   - /about.html
 ---
 
- I am a second-year M.Sc student at Macau University of Science and Technology ([MUST](https://www.must.edu.mo)), SCSE, majoring in Applied Mathematics and Data Science. <br>
- I obtained my bachelor's degree in Data Science and Big Data Technology from [Foshan University](https://www.fosu.edu.cn). Currently, I am working on the research topic of **AIGC Detection** and the applied topics of **AIGC(vision generation)**, including realistic human face fusion, controllnable video animation, and its resource and speed optimization. 
+ I am a second-year M.Sc student at Macau University of Science and Technology ([MUST](https://www.must.edu.mo)), SCSE, majoring in Applied Mathematics and Data Science. I obtained my bachelor's degree in Data Science and Big Data Technology from [Foshan University](https://www.fosu.edu.cn). Currently, I am working on the research topic of **AIGC Detection** and the applied topics of **AIGC(vision generation)**, including realistic human face fusion, controllnable video animation, and its resource and speed optimization. 
  
  **I am also looking for an interesting and challenging position both in the company and college in 2024 fall.**
 
