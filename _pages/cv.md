@@ -18,12 +18,11 @@ Experience
 ======
 * 2023/2~now: AI Intern
   * 软牛科技, Digital AI group.
-  * Focus on the AIGC area, especially on vision generation.
+  * Focus on the AIGC, especially on vision generation.
   
 * 2022~2023: Research Intern
   * Zhuhai UM Research Institute of Science and  Technology.
   * Research Area: Synthetic Image Detection, Advanced AIGC Technology, and AI Security.
-  * Supervisor: Prof. [Yuanyan Tang](https://www.fst.um.edu.mo/personal/yytang/)
 
 Leadership
 ======
