@@ -1,6 +1,11 @@
-# 20240424-水印去除方案调研
-
-***By Bob***
+---
+title: '[Watermark Survey] A Survey about the Watermark Removal'
+date: 2024-04-28
+permalink: /posts/2024/04/watermark/
+tags:
+  - Watermark Removal
+  - Paper Collection
+---
 
 **总结：** 调研了目前可尝试的一些水印去除方案，主要分为专属水印去除模型和基于扩散模型inpainting的水印去除。前者主要集中在水印的检测、提取和图像复原的pipeline上面，后者主要集中在图像的条件生成上（图生图），即不关心水印提取，只关心水印的定位和能否较好的重绘mask(水印)区域。从调研结果来看，目前开源和复现的专门用于水印去除的模型主要还是以22年以前的模型为主，近一两年的专属模型提出较少。而基于扩散模型Inpainting的生成式方法提出较多，但其需要手动选定水印区域或结合水印检测定位模块组合使用。且各自模型在水印去除的场景下，效果和速度不一。
 
