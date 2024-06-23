@@ -16,12 +16,15 @@ Education
 
 Experience
 ======
-* 2023/2~now: AI Intern
-  * AFS, Digital AI group.
-  * Focus on the AIGC, especially on vision generation.
+* 2024/6~now: AI Algorithm Engineer
+  * MagicLight Ltd.
+
+* 2024/2~2024/5: AI Intern
+  * AFS Ltd., Digital AI group.
+  * Focus on the application of AIGC(vision).
   
 * 2022~2023: Research Intern
-  * Zhuhai UM Research Institute of Science and  Technology.
+  * Zhuhai UM Research Institute of Science and Technology.
   * Research Area: Synthetic Image Detection, Advanced AIGC Technology, and AI Security.
 
 Leadership
