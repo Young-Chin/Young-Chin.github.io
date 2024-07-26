@@ -12,7 +12,7 @@ redirect_from:
 Education
 ======
 * B.E. in Data Science and Big Data Technology, Foshan University, 2022
-* M.S. in Applied Mathematics and Data Science, MUST, 2024(expected)
+* M.S. in Applied Mathematics and Data Science, MUST, 2024
 
 Experience
 ======
