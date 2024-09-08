@@ -18,6 +18,7 @@ Experience
 ======
 * 2024/6~now: AI Algorithm Engineer
   * MagicLight Ltd.
+  * Focus on the controllable image and video generation.
 
 * 2024/2~2024/5: AI Intern
   * AFS Ltd., Digital AI group.
