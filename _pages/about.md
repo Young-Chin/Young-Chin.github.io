@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
- I am currently an *Algorithm Engineer*, 
+ I am currently an *Algorithm Engineer* in MagicLight, 
  focusing on the *Vision Generation* from AI. 
  I obtained my Master Degree from Macau University of Science and Technology ([MUST](https://www.must.edu.mo)), SCSE, majoring in Applied Mathematics and Data Science, 
  and Bachelor Degree from [Foshan University](https://www.fosu.edu.cn) majoring in Data Science and Big Data Technology.

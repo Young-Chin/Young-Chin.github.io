@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Yang Chin/ 秦洋"
+title                    : "Yang Chin/秦洋"
 title_separator          : "-"
 name                     : &name "Yang Chin"
 description              : &description "personal description"
@@ -80,10 +80,10 @@ analytics:
 
 # Site Author
 author:
-  name             : "Yang Chin"
+  name             : "Yang Chin/Bob/秦洋"
   avatar           : "personal photo.jpeg"
-  bio              : "Second-year M.Sc student at MUST"
-  location         : "Macau SAR"
+  bio              : "Algorithm Engineer in MagicLight"
+  location         : "SZ, China"
   employer         :
   pubmed           : # "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : # "http://yourfullgooglescholarurl.com"
