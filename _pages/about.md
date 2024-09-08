@@ -23,7 +23,7 @@ Interests
 News
 ======
 \[Jun 2024\] I will join **[MagicLight](https://www.magiclight.ai)**, aiming at building the AIGC platform and community for creators. Feel free to try our product **[白日梦AI(Domestic version)](https://aibrm.com)** or **[MagiclightAI(Overseas version)](https://magiclight.ai)** \\
-# \[Apr 2024\] I was invited for an interview as the ***Outstanding Postgraduate Students*** in MUST. \\
+[//]: \[Apr 2024\] I was invited for an interview as the ***Outstanding Postgraduate Students*** in MUST. \\
 \[Feb 2024\] I will join **[软牛科技](https://www.afirstsoft.cn)** as an **AI Intern** for vision generation. \\
 \[Nov 2023\] **MAPS** has won the **Bronze Award** and **Best Application Award** in [The 8th Guangdong-Hong Kong-Macao-Greater Bay Area IT Application Development Competition](https://www.aidit.org/registration/732), which will be posted on China Innovation and Entrepreneurship Fair. \\
 \[Nov 2023\] I was honored to be awarded the [YuanGuang Software Scholarship 2023](https://www.must.edu.mo/student-affairs-office/student-services/scholarships/company) (only 7 postgraduates in MUST). Thanks for all! \\
