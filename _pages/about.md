@@ -8,19 +8,22 @@ redirect_from:
   - /about.html
 ---
 
- I am a second-year M.Sc student at Macau University of Science and Technology ([MUST](https://www.must.edu.mo)), SCSE, majoring in Applied Mathematics and Data Science. I obtained my bachelor's degree in Data Science and Big Data Technology from [Foshan University](https://www.fosu.edu.cn). Currently, I am working on the applied area of **AIGC(vision generation)**.
+ I am currently an *Algorithm Engineer*, 
+ focusing on the *Vision Generation* from AI. 
+ I obtained my Master Degree from Macau University of Science and Technology ([MUST](https://www.must.edu.mo)), SCSE, majoring in Applied Mathematics and Data Science, 
+ and Bachelor Degree from [Foshan University](https://www.fosu.edu.cn) majoring in Data Science and Big Data Technology.
 
-Research Interests
+Interests
 ======
-- AIGC and Its Applications
+- AIGC and Its Applications(Controllable Image/Video Generation)
 - Diffusion-based Generative Models
 - AI Security and Multimedia Forensics
 - Smart City and its Applications
 
 News
 ======
-\[Jun 2024\] I will join **[MagicLight](https://www.magiclight.ai)**, aiming at building the AIGC platform and community for creators. Feel free to enjoy our product **[白日梦AI](https://aibrm.com)** on Web/APP! \\
-\[Apr 2024\] I was invited for an interview as the ***Outstanding Postgraduate Students*** in MUST. \\
+\[Jun 2024\] I will join **[MagicLight](https://www.magiclight.ai)**, aiming at building the AIGC platform and community for creators. Feel free to try our product **[白日梦AI(Domestic version)](https://aibrm.com)** or **[MagiclightAI(Overseas version)](https://magiclight.ai)** \\
+# \[Apr 2024\] I was invited for an interview as the ***Outstanding Postgraduate Students*** in MUST. \\
 \[Feb 2024\] I will join **[软牛科技](https://www.afirstsoft.cn)** as an **AI Intern** for vision generation. \\
 \[Nov 2023\] **MAPS** has won the **Bronze Award** and **Best Application Award** in [The 8th Guangdong-Hong Kong-Macao-Greater Bay Area IT Application Development Competition](https://www.aidit.org/registration/732), which will be posted on China Innovation and Entrepreneurship Fair. \\
 \[Nov 2023\] I was honored to be awarded the [YuanGuang Software Scholarship 2023](https://www.must.edu.mo/student-affairs-office/student-services/scholarships/company) (only 7 postgraduates in MUST). Thanks for all! \\
