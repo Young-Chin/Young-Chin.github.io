@@ -9,7 +9,7 @@ redirect_from:
 ---
 
  I am currently an *AI Engineer* in MagicLight, 
- focusing on the *Vision Generation* from AI. 
+ focusing on the *Vision Generation* from AI.
  I obtained my Master Degree from Macau University of Science and Technology ([MUST](https://www.must.edu.mo)), SCSE, majoring in Applied Mathematics and Data Science, 
  and Bachelor Degree from [Foshan University](https://www.fosu.edu.cn) majoring in Data Science and Big Data Technology.
 
@@ -22,7 +22,7 @@ Interests
 
 News
 ======
-\[Sep 2024\] I was invited for an interview as the ***Outstanding Postgraduate Students*** in MUST. [See that in the video](https://mp.weixin.qq.com/s/qjbt6UT025wPgkofuqrQ2Q). \\
+\[Sep 2024\] I was invited for an interview as the ***Outstanding Postgraduate Students*** in MUST. [See video here](https://www.youtube.com/watch?si=aU1BVE1TQiOXAV9W&v=KoJ63k_ffKs&feature=youtu.be). \\
 \[Jun 2024\] I will join **[MagicLight](https://www.magiclight.ai)**, aiming at building the AIGC platform and community for creators. Feel free to try our product **[白日梦AI(Domestic)](https://aibrm.com)** or **[MagiclightAI(Overseas)](https://magiclight.ai)** \\
 \[Feb 2024\] I will join **[软牛科技](https://www.afirstsoft.cn)** as an **AI Intern** for vision generation. \\
 \[Nov 2023\] **MAPS** has won the **Bronze Award** and **Best Application Award** in [The 8th Guangdong-Hong Kong-Macao-Greater Bay Area IT Application Development Competition](https://fie.must.edu.mo/news/article/view/id-3815.html;jsessionid=28D15E6D82FD886B2F838C0E7177174D?locale=zh_CN), which will be posted on China Innovation and Entrepreneurship Fair. \\
