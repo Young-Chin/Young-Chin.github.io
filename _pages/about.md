@@ -15,8 +15,10 @@ redirect_from:
 
 Interests
 ======
-- AIGC and Its Applications(Controllable Image/Video Generation)
-- Diffusion-based Generative Models
+- AIGC and Its Applications
+  - ID Preserving and Face Swap
+  - Regionally controlled image generation
+  - Subject-consistent video generation
 - AI Security and Multimedia Forensics
 - Smart City and its Applications
 
