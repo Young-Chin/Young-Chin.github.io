@@ -16,6 +16,7 @@ redirect_from:
 Interests
 ======
 - AIGC and Its Applications
+  - Prompt Engineering for story script and image/video generation
   - ID Preserving and Face Swap
   - Regionally controlled image generation
   - Subject-consistent video generation
