@@ -16,13 +16,13 @@ Education
 
 Experience
 ======
-* 2024/6~now: AI Algorithm Engineer
+* 2024/6~2025/8: AI Engineer
   * MagicLight Ltd.
-  * Focus on the controllable image and video generation.
+  * Focus on the Controllable Image Generation and Application of LLM.
 
 * 2024/2~2024/5: AI Intern
   * AFS Ltd., Digital AI group.
-  * Focus on the application of AIGC(vision).
+  * Focus on the Human Portrait Generation and Pose-driven Video Generation.
   
 * 2022~2023: Research Intern
   * Zhuhai UM Research Institute of Science and Technology.
