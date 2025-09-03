@@ -16,9 +16,13 @@ Education
 
 Experience
 ======
+* 2025/9~now: Senior Engineer
+  * AllVoiceLab, Quwan Technology Co., Ltd.
+  * Focus on the multimodal understanding and editing of film and television dramas.
+
 * 2024/6~2025/8: AI Engineer
-  * MagicLight Ltd.
-  * Focus on the Controllable Image Generation and Application of LLM.
+  * MagicLight Co., Ltd.
+  * Focus on the AIGC(text/image/video) for long story video generation.
 
 * 2024/2~2024/5: AI Intern
   * AFS Ltd., Digital AI group.
@@ -30,4 +34,4 @@ Experience
 
 Leadership
 ======
-* Currently leading the MAPS project as a key founder.
+* A key founder of the MAPS project.
