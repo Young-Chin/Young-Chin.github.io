@@ -8,8 +8,8 @@ redirect_from:
   - /about.html
 ---
 
- I am currently an *AI Engineer* in MagicLight, 
- focusing on the *Vision Generation* from AI.
+ I am currently an *AI Engineer* in [AllVoiceLab](https://www.allvoicelab.cn/), focusing on Multimodality(text, speech, vision) for Film and television understanding and editing.
+ Before that, I worked at [MagicLight](https://www.magiclight.ai/official-website), focusing on AIGC(text, image, video) for long story video generation.
  I obtained my Master Degree from Macau University of Science and Technology ([MUST](https://www.must.edu.mo)), SCSE, majoring in Applied Mathematics and Data Science, 
  and Bachelor Degree from [Foshan University](https://www.fosu.edu.cn) majoring in Data Science and Big Data Technology.
 
