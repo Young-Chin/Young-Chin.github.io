@@ -28,7 +28,7 @@ Interests
 
 News
 ======
-\[sep 2025\] I will join All Voice Lab in [Quwan Technology](https://www.quwangroup.com/), aiming at film&drama understanding and editing.
+\[sep 2025\] I will join [AllVoiceLab](https://www.allvoicelab.cn/) in [Quwan Technology](https://www.quwangroup.com/), aiming at film and drama understanding and editing. \\
 \[Sep 2024\] I was invited for an interview as the ***Outstanding Postgraduate Students*** in MUST. [See video here](https://www.youtube.com/watch?si=aU1BVE1TQiOXAV9W&v=KoJ63k_ffKs&feature=youtu.be). \\
 \[Jun 2024\] I will join **[MagicLight](https://www.magiclight.ai)**, aiming at building the AIGC platform and community for creators. Feel free to try our product **[白日梦AI(Domestic)](https://aibrm.com)** or **[MagiclightAI(Overseas)](https://magiclight.ai)** \\
 \[Feb 2024\] I will join **[软牛科技](https://www.afirstsoft.cn)** as an **AI Intern** for vision generation. \\
