@@ -8,13 +8,16 @@ redirect_from:
   - /about.html
 ---
 
- I am currently an *AI Engineer* in [AllVoiceLab](https://www.allvoicelab.cn/), focusing on Multimodality(text, speech, vision) for Film and television understanding and editing.
+ I am currently an *AI Engineer* in [AllVoiceLab](https://www.allvoicelab.cn/), focusing on Multimodality(text, speech, vision) for film and drama understanding and editing.
  Before that, I worked at [MagicLight](https://www.magiclight.ai/official-website), focusing on AIGC(text, image, video) for long story video generation.
  I obtained my Master Degree from Macau University of Science and Technology ([MUST](https://www.must.edu.mo)), SCSE, majoring in Applied Mathematics and Data Science, 
  and Bachelor Degree from [Foshan University](https://www.fosu.edu.cn) majoring in Data Science and Big Data Technology.
 
 Interests
 ======
+- Multimodality
+  - Vision Language Model
+  - Alignment for Speech and Vision 
 - AIGC and Its Applications
   - Prompt Engineering for story script and image/video generation
   - ID Preserving and Face Swap
@@ -25,6 +28,7 @@ Interests
 
 News
 ======
+\[sep 2025\] I will join All Voice Lab in [Quwan Technology](https://www.quwangroup.com/), aiming at film&drama understanding and editing.
 \[Sep 2024\] I was invited for an interview as the ***Outstanding Postgraduate Students*** in MUST. [See video here](https://www.youtube.com/watch?si=aU1BVE1TQiOXAV9W&v=KoJ63k_ffKs&feature=youtu.be). \\
 \[Jun 2024\] I will join **[MagicLight](https://www.magiclight.ai)**, aiming at building the AIGC platform and community for creators. Feel free to try our product **[白日梦AI(Domestic)](https://aibrm.com)** or **[MagiclightAI(Overseas)](https://magiclight.ai)** \\
 \[Feb 2024\] I will join **[软牛科技](https://www.afirstsoft.cn)** as an **AI Intern** for vision generation. \\
