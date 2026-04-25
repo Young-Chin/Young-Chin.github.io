@@ -35,26 +35,6 @@ redirect_from:
 
   <hr class="notion-divider">
 
-  <!-- Projects Section -->
-  <h2 class="notion-h2">Projects</h2>
-
-  <div class="notion-project-list">
-    {% for post in site.portfolio %}
-      <div class="notion-project-item">
-        <a href="{{ base_path }}{{ post.url }}">
-          <span class="notion-project-icon">⭐</span>
-          <span>{{ post.title }}</span>
-        </a>
-      </div>
-    {% endfor %}
-  </div>
-
-  <p class="notion-section-link">
-    <a href="{{ base_path }}/year-archive/" class="notion-link">View all blog posts →</a>
-  </p>
-
-  <hr class="notion-divider">
-
   <!-- Expertise Section -->
   <h2 class="notion-h2">Expertise</h2>
 
@@ -107,23 +87,54 @@ redirect_from:
 
   <hr class="notion-divider">
 
-  <!-- Publications & CV Section -->
-  <h2 class="notion-h2">Publications & CV</h2>
+  <!-- Blog Section -->
+  <h2 class="notion-h2">Blog</h2>
 
-  <div class="notion-columns">
-    <div class="notion-column">
-      <h3 class="notion-h3">Publications</h3>
-      <p class="notion-text">
-        <a href="{{ base_path }}/publications/" class="notion-link">View all publications →</a>
-      </p>
-    </div>
-    <div class="notion-column">
-      <h3 class="notion-h3">Curriculum Vitae</h3>
-      <p class="notion-text">
-        <a href="{{ base_path }}/cv/" class="notion-link">View full CV →</a>
-      </p>
-    </div>
+  <div class="notion-blog-grid">
+    {% for post in site.posts limit:6 %}
+      {% assign card_bg = '' %}
+      {% assign card_icon = '' %}
+      {% if forloop.index == 1 %}
+        {% assign card_bg = 'linear-gradient(135deg, #e5f2fc 0%, #cce0f5 100%)' %}
+        {% assign card_icon = '🚀' %}
+      {% elsif forloop.index == 2 %}
+        {% assign card_bg = 'linear-gradient(135deg, #f3ebf9 0%, #e4d6f0 100%)' %}
+        {% assign card_icon = '✨' %}
+      {% elsif forloop.index == 3 %}
+        {% assign card_bg = 'linear-gradient(135deg, #f9f3dc 0%, #f0e6c0 100%)' %}
+        {% assign card_icon = '🎓' %}
+      {% elsif forloop.index == 4 %}
+        {% assign card_bg = 'linear-gradient(135deg, #e8f1ec 0%, #d0e4db 100%)' %}
+        {% assign card_icon = '📐' %}
+      {% elsif forloop.index == 5 %}
+        {% assign card_bg = 'linear-gradient(135deg, #fae9f1 0%, #f0d4e4 100%)' %}
+        {% assign card_icon = '🔍' %}
+      {% else %}
+        {% assign card_bg = 'linear-gradient(135deg, #f5ede9 0%, #e8ddd0 100%)' %}
+        {% assign card_icon = '💧' %}
+      {% endif %}
+      <a href="{{ base_path }}{{ post.url }}" class="notion-blog-card">
+        <div class="notion-blog-card-image" style="background: {{ card_bg }};">
+          <span class="notion-blog-card-icon">{{ card_icon }}</span>
+        </div>
+        <div class="notion-blog-card-content">
+          <p class="notion-blog-card-meta">{{ post.date | date: "%b %Y" }}</p>
+          <h3 class="notion-blog-card-title">{{ post.title }}</h3>
+          {% if post.tags %}
+            <div class="notion-blog-card-tags">
+              {% for tag in post.tags limit:2 %}
+                <span class="notion-tag">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </a>
+    {% endfor %}
   </div>
+
+  <p class="notion-section-link">
+    <a href="{{ base_path }}/year-archive/" class="notion-link">View all posts →</a>
+  </p>
 
   <hr class="notion-divider">
 
