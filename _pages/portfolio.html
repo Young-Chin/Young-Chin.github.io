@@ -1,14 +1,44 @@
 ---
-layout: archive
+layout: notion
 title: "Portfolio"
 permalink: /portfolio/
-author_profile: true
 ---
 
 {% include base_path %}
 
+<link rel="stylesheet" href="{{ base_path }}/assets/css/main.css">
 
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
-{% endfor %}
+<div class="notion-page">
+  
+  <h1 class="notion-page-title">Portfolio</h1>
+  
+  <p class="notion-text">A collection of my projects and creative work.</p>
+  
+  <hr class="notion-divider">
 
+  <div class="notion-project-list">
+    {% for post in site.portfolio %}
+      <div class="notion-project-item">
+        <a href="{{ base_path }}{{ post.url }}">
+          <span class="notion-project-icon">⭐</span>
+          <span>{{ post.title }}</span>
+        </a>
+        {% if post.excerpt %}
+          <p style="margin: 0.25em 0 0.5em 1.8em; font-size: 0.85em; color: rgba(55, 53, 47, 0.6);">
+            {{ post.excerpt | strip_html | truncate: 120 }}
+          </p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <hr class="notion-divider">
+
+  <div class="notion-callout notion-callout-gray">
+    <span class="notion-callout-icon">💡</span>
+    <div class="notion-callout-content">
+      <p>Want to see more? Check out my <a href="{{ base_path }}/year-archive/" class="notion-link">blog posts</a> and <a href="{{ base_path }}/publications/" class="notion-link">publications</a>.</p>
+    </div>
+  </div>
+
+</div>

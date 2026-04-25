@@ -1,0 +1,22 @@
+---
+layout: null
+---
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 | default: 'en' }}">
+  <head>
+    {% include head.html %}
+    <style>
+      /* Minimal reset for this layout only */
+      .sidebar, .masthead, .breadcrumbs, .page__meta, .page__related, .page__share, .page__footer {
+        display: none !important;
+      }
+      #main {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    {{ content }}
+  </body>
+</html>
