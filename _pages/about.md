@@ -141,6 +141,13 @@ redirect_from:
     </p>
   </section>
 
+  <!-- CV Section -->
+  <section class="notion-section">
+    <h2 class="notion-h2">Curriculum Vitae</h2>
+    <p class="notion-text" style="margin-bottom: 1em;">A quick overview of my education, experience, and projects.</p>
+    <button class="notion-button" onclick="openCvModal()">View CV</button>
+  </section>
+
   <!-- Contact Section -->
   <section class="notion-section">
     <h2 class="notion-h2">Contact</h2>
@@ -168,3 +175,67 @@ redirect_from:
   </footer>
 
 </div>
+
+<!-- CV Modal -->
+<div class="notion-modal" id="cv-modal">
+  <div class="notion-modal-overlay" onclick="closeCvModal()"></div>
+  <div class="notion-modal-container">
+    <button class="notion-modal-close" onclick="closeCvModal()" aria-label="Close">✕</button>
+    <div class="notion-modal-content">
+      <h2 class="notion-modal-title">Yang Chin</h2>
+      <p class="notion-modal-subtitle">AI Engineer · Shenzhen, China</p>
+
+      <div class="notion-cv-section">
+        <h3>Education</h3>
+        <ul>
+          <li>M.S. in Applied Mathematics and Data Science, Macau University of Science and Technology, 2024</li>
+          <li>B.E. in Data Science and Big Data Technology, Foshan University, 2022</li>
+        </ul>
+      </div>
+
+      <div class="notion-cv-section">
+        <h3>Experience</h3>
+        <p><strong>Senior Engineer</strong> · AllVoiceLab, Quwan Technology · Sep 2025 – Present</p>
+        <ul>
+          <li>Focus on multimodal understanding and editing of film and television dramas (text, speech, vision).</li>
+        </ul>
+
+        <p><strong>AI Engineer</strong> · MagicLight · Jun 2024 – Aug 2025</p>
+        <ul>
+          <li>Built AIGC platform for long story video generation (text / image / video).</li>
+        </ul>
+
+        <p><strong>AI Intern</strong> · AFS Ltd., Digital AI Group · Feb 2024 – May 2024</p>
+        <ul>
+          <li>Human Portrait Generation and Pose-driven Video Generation.</li>
+        </ul>
+
+        <p><strong>Research Intern</strong> · Zhuhai UM Research Institute · 2022 – 2023</p>
+        <ul>
+          <li>Synthetic Image Detection, Advanced AIGC Technology, and AI Security.</li>
+        </ul>
+      </div>
+
+      <div class="notion-cv-section">
+        <h3>Leadership</h3>
+        <ul>
+          <li>A key founder of the <strong>MAPS</strong> project.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openCvModal() {
+    document.getElementById('cv-modal').classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCvModal() {
+    document.getElementById('cv-modal').classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeCvModal();
+  });
+</script>
