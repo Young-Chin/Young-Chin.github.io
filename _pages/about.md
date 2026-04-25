@@ -118,15 +118,7 @@ redirect_from:
           <span class="notion-blog-card-icon">{{ card_icon }}</span>
         </div>
         <div class="notion-blog-card-content">
-          <p class="notion-blog-card-meta">{{ post.date | date: "%b %Y" }}</p>
           <h3 class="notion-blog-card-title">{{ post.title }}</h3>
-          {% if post.tags %}
-            <div class="notion-blog-card-tags">
-              {% for tag in post.tags limit:2 %}
-                <span class="notion-tag">{{ tag }}</span>
-              {% endfor %}
-            </div>
-          {% endif %}
         </div>
       </a>
     {% endfor %}
