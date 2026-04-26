@@ -304,10 +304,11 @@
   list-style: none;
   padding: 0.5em 1em 1.2em;
   margin: 0;
-  background: var(--card-bg, rgba(55, 53, 47, 0.03));
+  background: #fff;
   border: 1px solid var(--card-border, rgba(55, 53, 47, 0.06));
   border-top: none;
   border-radius: 0 0 12px 12px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.07);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-6px);
