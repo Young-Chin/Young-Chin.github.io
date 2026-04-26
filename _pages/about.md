@@ -16,8 +16,8 @@ redirect_from:
     <div class="notion-columns">
       <div class="notion-column">
         <h1 class="notion-hero-title" dir="auto">Young Chin|Bob|秦洋</h1>
-        <p class="notion-hero-location">SZ/GZ China</p>
         <div class="notion-hero-social">
+          <p class="notion-hero-location">SZ/GZ China</p>
           <a href="mailto:yangqinbob@gmail.com" class="notion-social-icon" title="Email" target="_blank" rel="noopener">
             <i class="fas fa-envelope"></i>
           </a>
@@ -49,13 +49,13 @@ redirect_from:
         <h3 class="notion-expertise-card-title">Multimodality</h3>
         <ul class="notion-expertise-card-list">
           <li>Vision Language Model</li>
-          <li>Speech-Vision Alignment</li>
+          <li>VLM-based OCR</li>
+          <li>Multimodal Speaker Diarization</li>
         </ul>
       </div>
       <div class="notion-expertise-card" style="--card-bg: rgba(243, 235, 249, 0.45); --card-border: rgba(220, 204, 232, 0.5);">
         <h3 class="notion-expertise-card-title">AIGC</h3>
         <ul class="notion-expertise-card-list">
-          <li>Prompt Engineering</li>
           <li>ID Preserving & Face Swap</li>
           <li>Regional Controlled Generation</li>
           <li>Subject-Consistent Video Gen</li>
@@ -84,7 +84,7 @@ redirect_from:
     <div class="notion-news-list">
       <div class="notion-news-item">
         <span class="notion-news-date">Sep 2025</span>
-        <span class="notion-news-text">Joining <a href="https://www.allvoicelab.cn/" class="notion-link">AllVoiceLab</a> at <a href="https://www.quwangroup.com/" class="notion-link">Quwan Technology</a> for film and drama understanding and editing.</span>
+        <span class="notion-news-text">Joining <a href="https://www.allvoicelab.cn/" class="notion-link">AllVoiceLab</a> at <a href="https://www.quwangroup.com/" class="notion-link">Quwan Technology</a> , All Voice Lab Team.</span>
       </div>
       <div class="notion-news-item">
         <span class="notion-news-date">Sep 2024</span>
@@ -156,13 +156,13 @@ redirect_from:
   <!-- CV Section -->
   <section class="notion-section">
     <h2 class="notion-h2">Curriculum Vitae</h2>
-    <p class="notion-text" style="margin-bottom: 1em;">A quick overview of my education, experience, and projects.</p>
+    <p class="notion-text" style="margin-bottom: 1em;">A quick overview of my education and experience</p>
     <button class="notion-button" onclick="openCvModal()">View CV</button>
   </section>
 
   <!-- Footer -->
   <footer class="notion-footer">
-    <p>Let's create something amazing together.</p>
+    <p>Be passionate, be creative!</p>
     <p class="notion-footer-copy">© {{ 'now' | date: '%Y' }} Yang Chin. Built with Jekyll.</p>
   </footer>
 
@@ -205,13 +205,6 @@ redirect_from:
         <p><strong>Research Intern</strong> · Zhuhai UM Research Institute · 2022 – 2023</p>
         <ul>
           <li>Synthetic Image Detection, Advanced AIGC Technology, and AI Security.</li>
-        </ul>
-      </div>
-
-      <div class="notion-cv-section">
-        <h3>Leadership</h3>
-        <ul>
-          <li>A key founder of the <strong>MAPS</strong> project.</li>
         </ul>
       </div>
     </div>
