@@ -15,12 +15,22 @@ redirect_from:
   <section class="notion-section notion-hero">
     <div class="notion-columns">
       <div class="notion-column">
-        <h1 class="notion-hero-title" dir="auto">Yang Chin</h1>
-        <p class="notion-hero-subtitle">AI Engineer passionate about Multimodality and AIGC</p>
+        <h1 class="notion-hero-title" dir="auto">Young Chin|Bob|秦洋</h1>
+        <p class="notion-hero-location">SZ/GZ China</p>
+        <div class="notion-hero-social">
+          <a href="mailto:yangqinbob@gmail.com" class="notion-social-icon" title="Email" target="_blank" rel="noopener">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/Young-Chin" class="notion-social-icon" title="GitHub" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://x.com/Young_Chin_Bob" class="notion-social-icon" title="X" target="_blank" rel="noopener">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
         <div class="notion-hero-body">
-          <p>Currently an <em>AI Engineer</em> at <a href="https://www.allvoicelab.cn/" class="notion-link">All Voice Lab</a>, focusing on Multimodality (text, speech, vision) for film and drama understanding and editing.</p>
-          <p>Previously at <a href="https://www.magiclight.ai/official-website" class="notion-link">MagicLight</a>, working on AIGC (text, image, video) for long story video generation.</p>
-          <p>Master's from <a href="https://www.must.edu.mo" class="notion-link">MUST</a> (Applied Mathematics and Data Science). Bachelor's from <a href="https://www.fosu.edu.cn" class="notion-link">Foshan University</a> (Data Science and Big Data Technology).</p>
+          <p>Currently a Senior AI Engineer in <a href="https://www.quwangroup.com" class="notion-link">Quwan</a>, focusing on Multimodality and Ai Agent.</p>
+          <p>Previously at <a href="https://www.magiclight.ai" class="notion-link">MagicLight</a>, working on AIGC (text, image, video) for long story video generation.</p>
         </div>
       </div>
       <div class="notion-column notion-column-shrink">
@@ -146,26 +156,6 @@ redirect_from:
     <h2 class="notion-h2">Curriculum Vitae</h2>
     <p class="notion-text" style="margin-bottom: 1em;">A quick overview of my education, experience, and projects.</p>
     <button class="notion-button" onclick="openCvModal()">View CV</button>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="notion-section">
-    <h2 class="notion-h2">Contact</h2>
-    <div class="notion-columns">
-      <div class="notion-column">
-        <p class="notion-contact-item">📍 Shenzhen, China</p>
-        <p class="notion-contact-item">📧 <a href="mailto:yangqinbob@gmail.com" class="notion-link">yangqinbob@gmail.com</a></p>
-        <p class="notion-contact-item">🏢 <a href="https://www.allvoicelab.cn/" class="notion-link">All Voice Lab</a></p>
-      </div>
-      <div class="notion-column">
-        <p class="notion-contact-item">
-          <a href="https://github.com/Young-Chin" class="notion-social-link" target="_blank" rel="noopener">GitHub →</a>
-        </p>
-        <p class="notion-contact-item">
-          <a href="mailto:yangqinbob@gmail.com" class="notion-social-link">Email →</a>
-        </p>
-      </div>
-    </div>
   </section>
 
   <!-- Footer -->

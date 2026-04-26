@@ -1,0 +1,39 @@
+---
+layout: null
+---
+{% include base_path %}
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 | default: 'en' }}">
+  <head>
+    {% include head.html %}
+    <style>
+      .sidebar, .masthead, .breadcrumbs, .page__meta, .page__related, .page__share, .page__footer, .author__avatar, .author__content, .author__urls-wrapper {
+        display: none !important;
+      }
+      #main {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="notion-page notion-post-page">
+      <a href="{{ base_path }}/" class="notion-post-back">← Home</a>
+      <h1 class="notion-post-title">{{ page.title }}</h1>
+      <p class="notion-post-meta">{{ page.date | date: "%B %d, %Y" }}</p>
+      {% if page.tags and page.tags.size > 0 %}
+        <div class="notion-post-tags">
+          {% for tag in page.tags %}
+            <span class="notion-tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+      <div class="notion-post-content">
+        {{ content }}
+      </div>
+      <footer class="notion-footer">
+        <p class="notion-footer-copy">© {{ 'now' | date: '%Y' }} Young Chin. Built with Jekyll.</p>
+      </footer>
+    </div>
+  </body>
+</html>
