@@ -262,6 +262,58 @@
 }
 
 /* === Expertise / Skills === */
+.notion-expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 1.25em 0;
+}
+
+.notion-expertise-card {
+  background: var(--card-bg, rgba(55, 53, 47, 0.03));
+  border: 1px solid var(--card-border, rgba(55, 53, 47, 0.06));
+  border-radius: 12px;
+  padding: 1.2em 1em;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease;
+}
+
+.notion-expertise-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+}
+
+.notion-expertise-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 0.6em;
+  color: rgb(55, 53, 47);
+  letter-spacing: -0.01em;
+}
+
+.notion-expertise-card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notion-expertise-card-list li {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(55, 53, 47, 0.7);
+  padding: 0.25em 0;
+  position: relative;
+  padding-left: 1.1em;
+}
+
+.notion-expertise-card-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0.2em;
+  color: rgba(55, 53, 47, 0.35);
+}
+
 .notion-expertise-list {
   list-style: none;
   padding: 0;
@@ -559,6 +611,21 @@
   .notion-blog-grid {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 12px;
+  }
+
+  .notion-expertise-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .notion-expertise-card {
+    padding: 1em 0.85em;
+  }
+}
+
+@media (max-width: 480px) {
+  .notion-expertise-grid {
+    grid-template-columns: 1fr;
   }
 }
 

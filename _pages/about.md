@@ -44,31 +44,33 @@ redirect_from:
   <!-- Expertise Section -->
   <section class="notion-section">
     <h2 class="notion-h2">Expertise</h2>
-    <div class="notion-columns">
-      <div class="notion-column">
-        <h3 class="notion-h3">Multimodality</h3>
-        <ul class="notion-expertise-list">
+    <div class="notion-expertise-grid">
+      <div class="notion-expertise-card" style="--card-bg: rgba(229, 242, 252, 0.45); --card-border: rgba(186, 218, 244, 0.5);">
+        <h3 class="notion-expertise-card-title">Multimodality</h3>
+        <ul class="notion-expertise-card-list">
           <li>Vision Language Model</li>
           <li>Speech-Vision Alignment</li>
         </ul>
-
-        <h3 class="notion-h3">AIGC</h3>
-        <ul class="notion-expertise-list">
+      </div>
+      <div class="notion-expertise-card" style="--card-bg: rgba(243, 235, 249, 0.45); --card-border: rgba(220, 204, 232, 0.5);">
+        <h3 class="notion-expertise-card-title">AIGC</h3>
+        <ul class="notion-expertise-card-list">
           <li>Prompt Engineering</li>
           <li>ID Preserving & Face Swap</li>
           <li>Regional Controlled Generation</li>
           <li>Subject-Consistent Video Gen</li>
         </ul>
       </div>
-      <div class="notion-column">
-        <h3 class="notion-h3">AI Security</h3>
-        <ul class="notion-expertise-list">
+      <div class="notion-expertise-card" style="--card-bg: rgba(250, 233, 241, 0.45); --card-border: rgba(232, 196, 216, 0.5);">
+        <h3 class="notion-expertise-card-title">AI Security</h3>
+        <ul class="notion-expertise-card-list">
           <li>Multimedia Forensics</li>
           <li>Deepfake Detection</li>
         </ul>
-
-        <h3 class="notion-h3">Smart City</h3>
-        <ul class="notion-expertise-list">
+      </div>
+      <div class="notion-expertise-card" style="--card-bg: rgba(232, 241, 236, 0.45); --card-border: rgba(192, 220, 204, 0.5);">
+        <h3 class="notion-expertise-card-title">Smart City</h3>
+        <ul class="notion-expertise-card-list">
           <li>Urban Data Analytics</li>
           <li>IoT Applications</li>
         </ul>
