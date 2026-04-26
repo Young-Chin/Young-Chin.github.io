@@ -264,45 +264,71 @@
 /* === Expertise / Skills === */
 .notion-expertise-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
   margin: 1.25em 0;
 }
 
 .notion-expertise-card {
+  position: relative;
   background: var(--card-bg, rgba(55, 53, 47, 0.03));
   border: 1px solid var(--card-border, rgba(55, 53, 47, 0.06));
   border-radius: 12px;
   padding: 1.2em 1em;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  cursor: default;
 }
 
 .notion-expertise-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
+  border-radius: 12px 12px 0 0;
+  z-index: 10;
 }
 
 .notion-expertise-card-title {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  margin: 0 0 0.6em;
+  margin: 0;
   color: rgb(55, 53, 47);
   letter-spacing: -0.01em;
 }
 
 .notion-expertise-card-list {
+  position: absolute;
+  top: calc(100% - 1px);
+  left: -1px;
+  right: -1px;
   list-style: none;
-  padding: 0;
+  padding: 0.5em 1em 1.2em;
   margin: 0;
+  background: var(--card-bg, rgba(55, 53, 47, 0.03));
+  border: 1px solid var(--card-border, rgba(55, 53, 47, 0.06));
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.3s;
+  pointer-events: none;
+}
+
+.notion-expertise-card:hover .notion-expertise-card-list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .notion-expertise-card-list li {
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   line-height: 1.5;
-  color: rgba(55, 53, 47, 0.7);
-  padding: 0.25em 0;
+  color: rgba(55, 53, 47, 0.75);
+  padding: 0.3em 0;
   position: relative;
   padding-left: 1.1em;
 }
@@ -626,6 +652,18 @@
 @media (max-width: 480px) {
   .notion-expertise-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (hover: none) {
+  .notion-expertise-card-list {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    border: none;
+    padding: 0.6em 0 0;
+    pointer-events: auto;
   }
 }
 
