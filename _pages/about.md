@@ -29,7 +29,7 @@ redirect_from:
           </a>
         </div>
         <div class="notion-hero-body">
-          <p>Currently a Senior AI Engineer in <a href="https://www.quwangroup.com" class="notion-link">Quwan</a>, focusing on Multimodality and Ai Agent.</p>
+          <p>Currently a Senior AI Engineer in <a href="https://www.quwangroup.com" class="notion-link">Quwan</a>, focusing on Multimodality and AI Agent.</p>
           <p>Previously at <a href="https://www.magiclight.ai" class="notion-link">MagicLight</a>, working on AIGC (text, image, video) for long story video generation.</p>
         </div>
       </div>
