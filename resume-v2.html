@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>秦洋 / Bob - 简历</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0c12;
+      --bg-soft: #12121c;
+      --surface: rgba(255,255,255,0.035);
+      --border: rgba(255,255,255,0.06);
+      --text: #ececf3;
+      --text-dim: #9b9ba8;
+      --text-faint: #55555f;
+      --accent-1: #9b6dff;
+      --accent-2: #5a8aff;
+      --accent-warm: #ff8a5c;
+      --accent-agent: #2dd4bf;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Full-screen sections */
+    .slide {
+      min-height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 60px 40px;
+    }
+
+    .slide-inner {
+      max-width: 1100px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Ambient background blobs */
+    .slide::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.08;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .slide:nth-child(1)::before {
+      background: radial-gradient(circle, var(--accent-1), transparent 70%);
+      top: -10%;
+      right: -10%;
+    }
+    .slide:nth-child(2)::before {
+      background: radial-gradient(circle, var(--accent-2), transparent 70%);
+      bottom: -10%;
+      left: -10%;
+    }
+    .slide:nth-child(3)::before {
+      background: radial-gradient(circle, var(--accent-warm), transparent 70%);
+      top: 10%;
+      left: 30%;
+    }
+    .slide:nth-child(4)::before {
+      background: radial-gradient(circle, var(--accent-agent), transparent 70%);
+      bottom: -5%;
+      right: -5%;
+    }
+
+    /* Typography scale */
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-1);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    h1 .gradient {
+      background: linear-gradient(135deg, #fff 0%, #b8a5f0 60%, var(--accent-2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: clamp(16px, 2vw, 22px);
+      color: var(--text-dim);
+      font-weight: 300;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .body-text {
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    /* Decorative line */
+    .deco-line {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+      margin: 24px 0;
+    }
+
+    /* Layout helpers */
+    .flex-row {
+      display: flex;
+      gap: 80px;
+      align-items: flex-start;
+    }
+
+    .flex-row .left {
+      flex: 0 0 40%;
+    }
+
+    .flex-row .right {
+      flex: 1;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* Cards - cleaner */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(155, 109, 255, 0.2);
+    }
+
+    .card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .card p, .card li {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.8;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 6px;
+    }
+
+    .card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-1);
+      opacity: 0.7;
+    }
+
+    .highlight {
+      color: #d4c8f7;
+      font-weight: 500;
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .tag {
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      background: transparent;
+      transition: all 0.3s;
+    }
+
+    .tag:hover {
+      border-color: var(--accent-1);
+      color: var(--text);
+      background: rgba(155, 109, 255, 0.08);
+    }
+
+    .tag.primary {
+      background: linear-gradient(135deg, rgba(155,109,255,0.12), rgba(90,138,255,0.08));
+      border-color: rgba(155,109,255,0.25);
+      color: #c8b8f0;
+    }
+
+    /* Meta row */
+    .meta {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      font-size: 14px;
+      color: var(--text-faint);
+    }
+
+    .meta-item strong {
+      display: block;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    /* Work grid */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .work-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      transition: all 0.4s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(155, 109, 255, 0.2);
+    }
+
+    .work-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .work-card p {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.8;
+    }
+
+    /* Company header inline */
+    .company-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .company-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .company-row h3 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .company-row p {
+      font-size: 13px;
+      color: var(--text-faint);
+      margin: 2px 0 0;
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-faint);
+      font-size: 12px;
+      letter-spacing: 1px;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-hint svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 840px) {
+      .slide { padding: 40px 24px; }
+      .flex-row { flex-direction: column; gap: 40px; }
+      .flex-row .left { flex: 1; }
+      .work-grid { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .meta { gap: 20px; }
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 36px; }
+      h2 { font-size: 28px; }
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Profile -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <div class="eyebrow" style="font-size: 16px; letter-spacing: 4px; margin-bottom: 0;">Apply for Qwen Group</div>
+      </div>
+
+      <div class="flex-row reveal" style="align-items: center; gap: 120px;">
+        <div class="left">
+          <h1 style="margin-bottom: 16px; font-size: clamp(52px, 6.5vw, 84px);">秦洋 <span class="gradient">/ Bob</span></h1>
+          <div class="deco-line" style="margin-bottom: 36px;"></div>
+
+          <div style="margin-bottom: 36px;">
+            <div class="tags" style="margin: 0;">
+              <span class="tag" style="font-size: 14px; padding: 10px 20px;">Agentic Engineering</span>
+              <span class="tag" style="font-size: 14px; padding: 10px 20px;">Multimodality</span>
+              <span class="tag" style="font-size: 14px; padding: 10px 20px;">AIGC</span>
+            </div>
+          </div>
+
+          <p style="font-size: 18px; color: var(--text-dim); font-style: italic; line-height: 1.6; max-width: 360px;">
+            "人生就是一个字：Passion!!!"
+          </p>
+        </div>
+
+        <div class="right">
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <div style="display: flex; align-items: baseline; gap: 16px;">
+              <span style="font-family: var(--font-mono, monospace); font-size: 14px; font-weight: 500; color: var(--accent-1); opacity: 0.8; min-width: 24px;">01</span>
+              <div>
+                <div style="font-size: 26px; color: var(--text); font-weight: 600;">澳门科技大学</div>
+                <div style="font-size: 18px; color: var(--text-dim); font-weight: 400; margin-top: 2px;">理学硕士 · 应用数学与数据科学</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 16px;">
+              <span style="font-family: var(--font-mono, monospace); font-size: 14px; font-weight: 500; color: var(--accent-1); opacity: 0.65; min-width: 24px;">02</span>
+              <div>
+                <div style="font-size: 26px; color: var(--text); font-weight: 600;">佛山大学</div>
+                <div style="font-size: 18px; color: var(--text-dim); font-weight: 400; margin-top: 2px;">工学学士 · 数据科学与大数据技术</div>
+              </div>
+            </div>
+            <div style="height: 1px; background: var(--border); margin: 8px 0;"></div>
+            <div style="display: flex; align-items: baseline; gap: 16px;">
+              <span style="font-family: var(--font-mono, monospace); font-size: 14px; font-weight: 500; color: var(--accent-2); opacity: 0.8; min-width: 24px;">03</span>
+              <div>
+                <div style="font-size: 26px; color: var(--text); font-weight: 600;">趣丸科技</div>
+                <div style="font-size: 18px; color: var(--text-dim); font-weight: 400; margin-top: 2px;">多模态 · Agent · 高级算法工程师</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 16px;">
+              <span style="font-family: var(--font-mono, monospace); font-size: 14px; font-weight: 500; color: var(--accent-2); opacity: 0.65; min-width: 24px;">04</span>
+              <div>
+                <div style="font-size: 26px; color: var(--text); font-weight: 600;">光魔科技</div>
+                <div style="font-size: 18px; color: var(--text-dim); font-weight: 400; margin-top: 2px;">AIGC · 算法工程师</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>SCROLL</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- Slide 2: AIGC -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">工作经历 01</div>
+      <div class="company-row">
+        <div class="company-avatar">光</div>
+        <div>
+          <h3>光魔科技（深圳）有限公司</h3>
+          <p>算法工程师 · AIGC 全流程研发</p>
+        </div>
+      </div>
+
+      <h2 style="margin-bottom: 12px;"><span style="color: var(--accent-1);">白日梦 AI</span></h2>
+      <p class="body-text reveal" style="max-width: 720px; margin-bottom: 32px;">
+        参与海内外 AI 长视频生成产品全流程算法研发，覆盖 <span class="highlight">文本 → 图像 → 视频</span> 全链路，深入理解 AIGC 业务流与算法落地。
+      </p>
+
+      <div class="grid-2 reveal" style="grid-template-columns: repeat(3, 1fr); gap: 16px;">
+        <div class="work-card">
+          <h4>大模型效果与成本优化</h4>
+          <p>重构故事转剧本 LLM；优化影视内容提示词工程；调用成本降低 <span class="highlight">40%</span>；FLUX 提示词扩写优化。</p>
+        </div>
+        <div class="work-card">
+          <h4>人脸一致性 / 换脸</h4>
+          <p>从零构建人脸处理模块：<span class="highlight">人物重定位 + InstantID / PuLID 一致性 + 人脸融合</span>，达到消费级图像质量。</p>
+        </div>
+        <div class="work-card">
+          <h4>区域提示词控制</h4>
+          <p>基于 Kolors 实现 <span class="highlight">Attention 层区域隔离</span> + IPAdapter，实现生成内容与人物的区域控制。</p>
+        </div>
+        <div class="work-card">
+          <h4>软硬结合的区域控制</h4>
+          <p><span class="highlight">Inpainting + Pose + IPAdapter</span> 方案，缓解区域间干扰，减少人物动作畸形。</p>
+        </div>
+        <div class="work-card">
+          <h4>人物对口型</h4>
+          <p><span class="highlight">Audio2Lips + FaceDriven</span> 融合方案，短耗时低开销，提升人脸动态效果与对口型精准度。</p>
+        </div>
+        <div class="work-card">
+          <h4>图生视频 / 动作驱动</h4>
+          <p>开源 DynamiCrafter / CogVideoX / Wan2.1；闭源 Pika / RunWay / MiniMax API 对接与优化。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3: Multimodality -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">工作经历 02</div>
+      <div class="company-row">
+        <div class="company-avatar" style="background: linear-gradient(135deg, var(--accent-warm), #ff5e7a);">趣</div>
+        <div>
+          <h3>广州趣丸网络科技有限公司</h3>
+          <p>All Voice Lab 事业部 · 高级算法工程师</p>
+        </div>
+      </div>
+
+      <h2 style="margin-bottom: 32px;">多模态视频理解与 <span style="color: var(--accent-warm);">内容感知</span></h2>
+
+      <div class="reveal" style="display: flex; flex-direction: column; gap: 16px; max-width: 800px;">
+        <div class="work-card">
+          <h4>视频字幕 OCR</h4>
+          <p>优化视频字幕 OCR 系统架构与难样本训练，效果 <span class="highlight">98%</span> / 性能提升 <span class="highlight">85%</span>；微调 VLM-based OCR 达 <span class="highlight">99%+</span> 准确率、80IPS；构建含 3 类指标 15 个模型的 Benchmark。</p>
+        </div>
+        <div class="work-card">
+          <h4>多模态说话人分割</h4>
+          <p><strong>V1:</strong> 3D-Speaker + 唇动检测 + 人脸追踪 + 改进聚类，相对纯声纹提升 <span class="highlight">10 个点</span>；<br><strong>V2:</strong> 多模态大模型匹配（ASR + OCR + 多轮对话 + 全局角色管理）。</p>
+        </div>
+        <div class="work-card">
+          <h4>多模态影视数据标注</h4>
+          <p>基于 Gemini 为长视频（2h+）做细粒度多维度数据标注，覆盖 <span class="highlight">对话、场景、镜头、角色</span> 等类别，支撑下游模型训练。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4: Agent -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow" style="color: var(--accent-agent);">当前探索</div>
+      <h2 style="margin-bottom: 48px;">Agent 系统设计与 <span style="color: var(--accent-agent);">工程化</span></h2>
+
+      <div class="flex-row reveal" style="gap: 40px;">
+        <div class="card" style="flex: 1;">
+          <h4>Agent 使用优化</h4>
+          <ul style="list-style:none;padding:0;">
+            <li style="position:relative;padding-left:16px;margin-bottom:8px;font-size:14px;color:var(--text-dim);line-height:1.8;"><span style="position:absolute;left:0;top:13px;width:5px;height:5px;border-radius:50%;background:var(--accent-agent);opacity:0.8;"></span>分层分级、自然学习与衰退的 <span class="highlight">记忆系统</span>，节省 80% 记忆 token 加载</li>
+            <li style="position:relative;padding-left:16px;margin-bottom:8px;font-size:14px;color:var(--text-dim);line-height:1.8;"><span style="position:absolute;left:0;top:13px;width:5px;height:5px;border-radius:50%;background:var(--accent-agent);opacity:0.8;"></span>优化 compact 机制，提升长任务可持续性与上下文知识沉淀</li>
+            <li style="position:relative;padding-left:16px;margin-bottom:8px;font-size:14px;color:var(--text-dim);line-height:1.8;"><span style="position:absolute;left:0;top:13px;width:5px;height:5px;border-radius:50%;background:var(--accent-agent);opacity:0.8;"></span>构建个性化 skill，持续优化 Agent 行为风格与用户画像</li>
+          </ul>
+        </div>
+        <div class="card" style="flex: 1;">
+          <h4>AutoResearch & Node-based</h4>
+          <ul style="list-style:none;padding:0;">
+            <li style="position:relative;padding-left:16px;margin-bottom:8px;font-size:14px;color:var(--text-dim);line-height:1.8;"><span style="position:absolute;left:0;top:13px;width:5px;height:5px;border-radius:50%;background:var(--accent-agent);opacity:0.8;"></span>基于 AutoResearch 范式优化 OCR 模型推理速度，沉淀算法场景经验</li>
+            <li style="position:relative;padding-left:16px;margin-bottom:8px;font-size:14px;color:var(--text-dim);line-height:1.8;"><span style="position:absolute;left:0;top:13px;width:5px;height:5px;border-radius:50%;background:var(--accent-agent);opacity:0.8;"></span>牵头完成团队原子能力的 <span class="highlight">Node 化与 Skill 化</span></li>
+            <li style="position:relative;padding-left:16px;margin-bottom:8px;font-size:14px;color:var(--text-dim);line-height:1.8;"><span style="position:absolute;left:0;top:13px;width:5px;height:5px;border-radius:50%;background:var(--accent-agent);opacity:0.8;"></span>对内部画布流产品进行 Agent 化改造</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-top: 60px; text-align: center;">
+        <p style="font-size: 15px; color: var(--text-faint);">期待与 Qwen 团队一起探索智能创作的边界</p>
+        <div class="deco-line" style="margin: 24px auto; width: 32px; background: linear-gradient(90deg, var(--accent-agent), var(--accent-2));"></div>
+      </div>
+    </div>
+  </section>
+
+<script>
+(function(){
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+})();
+</script>
+</body>
+</html>
