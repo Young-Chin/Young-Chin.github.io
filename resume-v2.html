@@ -390,6 +390,105 @@
     /* Scroll reveal */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Clickable work-card indicator */
+    .work-card[data-detail] {
+      cursor: pointer;
+      position: relative;
+    }
+    .work-card[data-detail]::after {
+      content: '↗';
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      font-size: 13px;
+      color: var(--text-faint);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .work-card[data-detail]:hover::after {
+      opacity: 0.5;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(0,0,0,.65); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .35s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: auto; }
+
+    .modal {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      max-width: 780px; width: 90%;
+      max-height: 82vh;
+      overflow-y: auto;
+      padding: 44px 40px 36px;
+      position: relative;
+      box-shadow: 0 32px 80px rgba(0,0,0,.6);
+      transform: translateY(20px) scale(.97);
+      transition: transform .4s ease;
+    }
+    .modal-overlay.open .modal { transform: none; }
+
+    .modal-close {
+      position: absolute; top: 16px; right: 20px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .25s;
+    }
+    .modal-close:hover { border-color: var(--accent-1); color: var(--text); }
+
+    .modal h3 {
+      font-size: 24px; font-weight: 700;
+      margin-bottom: 32px;
+      padding-right: 40px;
+    }
+    .modal-section { margin-bottom: 28px; }
+    .modal-section h4 {
+      font-size: 14px; font-weight: 600;
+      color: var(--accent-1);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .modal-section p, .modal-section li {
+      font-size: 15px; color: var(--text-dim); line-height: 1.9;
+    }
+    .modal-section ul { list-style: none; padding: 0; }
+    .modal-section li {
+      position: relative; padding-left: 16px; margin-bottom: 6px;
+    }
+    .modal-section li::before {
+      content: ''; position: absolute; left: 0; top: 11px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent-1); opacity: 0.7;
+    }
+
+    /* Image placeholder */
+    .img-placeholder {
+      margin-top: 20px;
+      border: 1.5px dashed var(--border);
+      border-radius: 14px;
+      padding: 48px;
+      text-align: center;
+      color: var(--text-faint);
+      font-size: 14px;
+      transition: border-color .3s;
+    }
+    .img-placeholder:hover { border-color: rgba(155,109,255,.25); }
+    .img-placeholder svg { display: block; margin: 0 auto 10px; opacity: 0.3; }
+
+    .highlight { color: #d4c8f7; font-weight: 500; }
   </style>
 </head>
 <body>
@@ -482,15 +581,15 @@
           <h4>大模型效果与成本优化</h4>
           <p>重构故事转剧本 LLM；优化影视内容提示词工程；调用成本降低 <span class="highlight">40%</span>；FLUX 提示词扩写优化。</p>
         </div>
-        <div class="work-card">
+        <div class="work-card" data-detail="face">
           <h4>人脸一致性 / 换脸</h4>
           <p>从零构建人脸处理模块：<span class="highlight">人物重定位 + InstantID / PuLID 一致性 + 人脸融合</span>，达到消费级图像质量。</p>
         </div>
-        <div class="work-card">
+        <div class="work-card" data-detail="region">
           <h4>区域提示词控制</h4>
           <p>基于 Kolors 实现 <span class="highlight">Attention 层区域隔离</span> + IPAdapter，实现生成内容与人物的区域控制。</p>
         </div>
-        <div class="work-card">
+        <div class="work-card" data-detail="free-control">
           <h4>软硬结合的区域控制</h4>
           <p><span class="highlight">Inpainting + Pose + IPAdapter</span> 方案，缓解区域间干扰，减少人物动作畸形。</p>
         </div>
@@ -569,12 +668,114 @@
     </div>
   </section>
 
+<!-- Modal Overlay -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modal-close">&times;</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
 <script>
 (function(){
+  // Scroll reveal
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.3 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Modal logic
+  const overlay = document.getElementById('modal-overlay');
+  const content = document.getElementById('modal-content');
+  const closeBtn = document.getElementById('modal-close');
+
+  const detailContent = {
+    face: `
+      <h3>如何在多重控制下做到 ID 一致且保真</h3>
+      <div class="modal-section">
+        <h4>背景</h4>
+        <ul>
+          <li>生图的控制叠加使得人脸 ID 信息被削弱（Lora / IPA / ControlNet）</li>
+          <li>主流 ID-preserving 算法 InstantID / PuLID / Lora 存在不足：侧脸和相似度难以两全</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h4>技术演进路线</h4>
+        <p><span class="highlight">FaceSwap</span> &rarr; <span class="highlight">Face-Inpainting</span> &rarr; <span class="highlight">End2End</span></p>
+        <ul>
+          <li><strong>FaceSwap</strong>：原图 + 人脸检测识别 + merge 新人脸图。优点：一致与保真，与多重控制解耦。缺点：融合边缘瑕疵，策略逻辑重，难以自适应。</li>
+          <li><strong>Face-Inpainting</strong>：原图 + ReID + 人脸 mask + 生成模型 inpainting。优点：更精准优雅的人脸定位，inpainting 显著减少融合瑕疵，一致与保真不变。缺点：复杂场景下 mask 成为瓶颈。</li>
+          <li><strong>End2End</strong>：UNO-Face 人脸场景融合，加入人脸 loss。优点：解决融合瑕疵，人脸更自然。缺点：增加一次模型推理。</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h4>成果</h4>
+        <p>人物高一致性与高保真成为产品特色，人脸方案整合复用在其他产品。</p>
+      </div>
+      <div class="img-placeholder">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        图片示例（待补充）
+      </div>`,
+    region: `
+      <h3>如何做到精准的图像区域控制</h3>
+      <div class="modal-section">
+        <h4>背景</h4>
+        <p>文生图中提示词描述到图像空间存在映射关系，但无法精准控制。</p>
+      </div>
+      <div class="modal-section">
+        <h4>技术方案</h4>
+        <p>构建区域拆分提示词，再对 attention map 进行对应的区域切分（或 mask），分别进行 attn 计算并叠加 IPA 特征，再拼接回去进行生成。</p>
+      </div>
+      <div class="modal-section">
+        <h4>成果</h4>
+        <p>实现区域控制的提示词到图像映射，满足产品可控性和分镜特性。</p>
+      </div>
+      <div class="img-placeholder">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        图片示例（待补充）
+      </div>`,
+    'free-control': `
+      <h3>如何做到 Free Control</h3>
+      <div class="modal-section">
+        <h4>背景</h4>
+        <p>基于控制信号的生成容易形成人物姿态瑕疵，没有控制信号无法实现分镜控制。</p>
+      </div>
+      <div class="modal-section">
+        <h4>技术方案</h4>
+        <p>基于区域控制实现底图生成 + 构建分镜 mask 与背景 + 基于区域进行 inpainting + 融入控制信号引导。</p>
+      </div>
+      <div class="modal-section">
+        <h4>成果</h4>
+        <p>满足分镜动作控制，但又不会导致人物动作瑕疵。</p>
+      </div>
+      <div class="img-placeholder">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        图片示例（待补充）
+      </div>`
+  };
+
+  function openModal(key) {
+    content.innerHTML = detailContent[key] || '';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.work-card[data-detail]').forEach(card => {
+    card.addEventListener('click', () => openModal(card.dataset.detail));
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
 })();
 </script>
 </body>
