@@ -926,3 +926,125 @@
   white-space: nowrap;
   font-weight: 500;
 }
+
+/* === 22. Override base theme (must come last for cascade priority) === */
+/* Force color and typography to prevent base theme from overriding */
+.notion-page,
+.notion-page * {
+  color: var(--color-text) !important;
+  font-family: var(--font-sans);
+}
+
+/* Secondary text elements */
+.notion-page .notion-text,
+.notion-page .notion-news-text,
+.notion-page .notion-cv-section p,
+.notion-page .notion-cv-section ul li,
+.notion-page .notion-hero-body {
+  color: var(--color-text-secondary) !important;
+}
+
+.notion-page .notion-text {
+  line-height: 1.7;
+}
+
+/* Tertiary text elements */
+.notion-page .notion-expertise-card-list li {
+  color: var(--color-text-tertiary) !important;
+}
+
+.notion-page .notion-hero-location,
+.notion-page .notion-modal-subtitle,
+.notion-page .notion-footer,
+.notion-page .notion-footer p,
+.notion-page .notion-footer-copy {
+  color: var(--color-text-tertiary) !important;
+}
+
+/* Accent colors */
+.notion-page .notion-news-date {
+  color: var(--color-accent) !important;
+}
+
+.notion-page .notion-link,
+.notion-page a.notion-link {
+  color: var(--color-accent) !important;
+}
+
+/* Backgrounds */
+.notion-page .notion-social-icon {
+  background: var(--color-surface) !important;
+}
+
+.notion-page .notion-button {
+  background: var(--color-text) !important;
+  color: var(--color-bg) !important;
+}
+
+.notion-page .notion-modal-container {
+  background: var(--color-bg-subtle) !important;
+}
+
+.notion-page .notion-modal-close {
+  background: var(--color-surface) !important;
+}
+
+.notion-page .notion-expertise-card {
+  background: var(--color-bg-subtle) !important;
+}
+
+.notion-page .notion-blog-card {
+  background: var(--color-bg-subtle) !important;
+}
+
+/* Borders */
+.notion-page .notion-cv-section h3 {
+  border-bottom-color: var(--color-border) !important;
+}
+
+.notion-page .notion-hero-photo {
+  border: 1px solid var(--color-border) !important;
+  box-shadow: 0 20px 40px -12px var(--color-shadow) !important;
+}
+
+.notion-page .notion-expertise-card {
+  border: 1px solid var(--color-border) !important;
+}
+
+.notion-page .notion-expertise-card:hover {
+  border-color: var(--color-border-hover) !important;
+  box-shadow: 0 8px 24px var(--color-shadow) !important;
+}
+
+.notion-page .notion-blog-card {
+  border: 1px solid var(--color-border) !important;
+}
+
+.notion-page .notion-news-item {
+  border-bottom-color: var(--color-border) !important;
+}
+
+.notion-page .notion-footer {
+  border-top-color: var(--color-border) !important;
+}
+
+/* Hover states */
+.notion-page .notion-modal-close:hover {
+  background: var(--color-border) !important;
+  color: var(--color-text) !important;
+}
+
+.notion-page .notion-expertise-card:hover .notion-expertise-card-list li {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Modal overlay */
+.notion-page .notion-modal-overlay {
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .notion-page .notion-modal-overlay {
+    background: rgba(0, 0, 0, 0.6) !important;
+  }
+}
