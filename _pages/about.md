@@ -12,7 +12,7 @@ redirect_from:
 <div class="notion-page">
 
   <!-- Hero Section -->
-  <section class="notion-section notion-hero">
+  <section class="notion-section notion-hero reveal">
     <div class="notion-columns">
       <div class="notion-column">
         <h1 class="notion-hero-title" dir="auto">Young Chin|Bob|秦洋</h1>
@@ -34,7 +34,7 @@ redirect_from:
         </div>
       </div>
       <div class="notion-column notion-column-shrink">
-        <div class="notion-hero-photo">
+        <div class="notion-hero-photo reveal-scale">
           <img src="{{ base_path }}/images/personal photo.jpeg" alt="Yang Chin">
         </div>
       </div>
@@ -43,9 +43,9 @@ redirect_from:
 
   <!-- Expertise Section -->
   <section class="notion-section">
-    <h2 class="notion-h2">Expertise</h2>
-    <div class="notion-expertise-grid">
-      <div class="notion-expertise-card" style="--card-bg: rgba(229, 242, 252, 0.45); --card-border: rgba(186, 218, 244, 0.5);">
+    <h2 class="notion-h2 reveal">Expertise</h2>
+    <div class="notion-expertise-grid reveal-stagger">
+      <div class="notion-expertise-card reveal">
         <h3 class="notion-expertise-card-title">Multimodality</h3>
         <ul class="notion-expertise-card-list">
           <li>Vision Language Model</li>
@@ -53,7 +53,7 @@ redirect_from:
           <li>Multimodal Speaker Diarization</li>
         </ul>
       </div>
-      <div class="notion-expertise-card" style="--card-bg: rgba(243, 235, 249, 0.45); --card-border: rgba(220, 204, 232, 0.5);">
+      <div class="notion-expertise-card reveal">
         <h3 class="notion-expertise-card-title">AIGC</h3>
         <ul class="notion-expertise-card-list">
           <li>ID Preserving & Face Swap</li>
@@ -61,14 +61,14 @@ redirect_from:
           <li>Subject-Consistent Video Gen</li>
         </ul>
       </div>
-      <div class="notion-expertise-card" style="--card-bg: rgba(250, 233, 241, 0.45); --card-border: rgba(232, 196, 216, 0.5);">
+      <div class="notion-expertise-card reveal">
         <h3 class="notion-expertise-card-title">AI Security</h3>
         <ul class="notion-expertise-card-list">
           <li>Multimedia Forensics</li>
           <li>Deepfake Detection</li>
         </ul>
       </div>
-      <div class="notion-expertise-card" style="--card-bg: rgba(232, 241, 236, 0.45); --card-border: rgba(192, 220, 204, 0.5);">
+      <div class="notion-expertise-card reveal">
         <h3 class="notion-expertise-card-title">Smart City</h3>
         <ul class="notion-expertise-card-list">
           <li>Urban Data Analytics</li>
@@ -80,8 +80,8 @@ redirect_from:
 
   <!-- News Section -->
   <section class="notion-section">
-    <h2 class="notion-h2">News</h2>
-    <div class="notion-news-list">
+    <h2 class="notion-h2 reveal">News</h2>
+    <div class="notion-news-list reveal">
       <div class="notion-news-item">
         <span class="notion-news-date">May 2026</span>
         <span class="notion-news-text">Open-sourced <a href="https://github.com/Young-Chin/DeepTalk-Agent" class="notion-link">DeepTalk Agent</a>, a fully local voice AI assistant running on macOS Apple Silicon with MLX.</span>
@@ -111,8 +111,8 @@ redirect_from:
 
   <!-- Blog Section -->
   <section class="notion-section">
-    <h2 class="notion-h2">Blog</h2>
-    <div class="notion-blog-grid">
+    <h2 class="notion-h2 reveal">Blog</h2>
+    <div class="notion-blog-grid reveal-stagger">
       {% for post in site.posts limit:6 %}
         {% assign card_bg = '' %}
         {% assign card_icon = '' %}
@@ -142,7 +142,7 @@ redirect_from:
           {% assign card_icon = '💧' %}
           {% assign short_title = 'Watermark Removal' %}
         {% endif %}
-        <a href="{{ base_path }}{{ post.url }}" class="notion-blog-card" title="{{ post.title }}">
+        <a href="{{ base_path }}{{ post.url }}" class="notion-blog-card reveal" title="{{ post.title }}">
           <div class="notion-blog-card-image" style="background: {{ card_bg }};">
             <span class="notion-blog-card-icon">{{ card_icon }}</span>
           </div>
@@ -158,14 +158,14 @@ redirect_from:
   </section>
 
   <!-- CV Section -->
-  <section class="notion-section">
+  <section class="notion-section reveal">
     <h2 class="notion-h2">Curriculum Vitae</h2>
     <p class="notion-text" style="margin-bottom: 1em;">A quick overview of my education and experience</p>
     <button class="notion-button" onclick="openCvModal()">View CV</button>
   </section>
 
   <!-- Footer -->
-  <footer class="notion-footer">
+  <footer class="notion-footer reveal">
     <p>Be passionate, be creative!</p>
     <p class="notion-footer-copy">© {{ 'now' | date: '%Y' }} Yang Chin. Built with Jekyll.</p>
   </footer>
