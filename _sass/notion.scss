@@ -249,11 +249,49 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--space-lg) var(--space-lg);
+  padding-left: calc(var(--space-lg) + 8px);
   transition: border-color var(--duration-normal) var(--ease-out),
               box-shadow var(--duration-normal) var(--ease-out),
               transform var(--duration-normal) var(--ease-out);
   cursor: default;
-  border-left: 3px solid var(--card-accent, var(--color-border));
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Colored left accent with glow */
+.notion-expertise-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--card-accent, var(--color-accent));
+  box-shadow: 0 0 12px var(--card-accent, var(--color-accent));
+}
+
+/* Subtle radial gradient overlay for depth */
+.notion-expertise-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at top left,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+@media (prefers-color-scheme: dark) {
+  .notion-expertise-card::after {
+    background: radial-gradient(
+      ellipse at top left,
+      rgba(255, 255, 255, 0.03) 0%,
+      transparent 60%
+    );
+  }
 }
 
 .notion-expertise-card:nth-child(1) { --card-accent: #3b82f6; }
@@ -263,8 +301,10 @@
 
 .notion-expertise-card:hover {
   border-color: var(--color-border-hover);
-  box-shadow: 0 8px 24px var(--color-shadow);
-  transform: translateY(-2px);
+  box-shadow:
+    0 8px 24px var(--color-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transform: translateY(-3px);
 }
 
 .notion-expertise-card:hover .notion-expertise-card-list li {
@@ -277,12 +317,16 @@
   margin: 0 0 0.75em;
   color: var(--color-text);
   letter-spacing: -0.01em;
+  position: relative;
+  z-index: 1;
 }
 
 .notion-expertise-card-list {
   list-style: none;
   padding: 0;
   margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .notion-expertise-card-list li {
@@ -387,12 +431,15 @@
   transition: transform var(--duration-normal) var(--ease-out),
               border-color var(--duration-normal) var(--ease-out),
               box-shadow var(--duration-normal) var(--ease-out);
+  isolation: isolate;
 }
 
 .notion-blog-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
   border-color: var(--color-border-hover);
-  box-shadow: 0 8px 24px var(--color-shadow);
+  box-shadow:
+    0 12px 32px var(--color-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .notion-blog-card-image {
@@ -404,21 +451,64 @@
   overflow: hidden;
 }
 
+/* Frosted glass overlay on image */
+.notion-blog-card-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  z-index: 1;
+}
+
+/* Inner shadow for depth */
+.notion-blog-card-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 -8px 16px -8px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  pointer-events: none;
+}
+
 @media (prefers-color-scheme: dark) {
-  .notion-blog-card-image {
-    opacity: 0.8;
+  .notion-blog-card-image::before {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .notion-blog-card-image::after {
+    box-shadow: inset 0 -8px 16px -8px rgba(0, 0, 0, 0.4);
   }
 }
 
 .notion-blog-card-icon {
-  font-size: 1.75rem;
+  font-size: 2rem;
   line-height: 1;
-  z-index: 1;
-  opacity: 0.7;
+  z-index: 3;
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .notion-blog-card-content {
   padding: 0.65rem 0.85rem 0.8rem;
+  position: relative;
+}
+
+/* Subtle top highlight on content area */
+.notion-blog-card-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
 }
 
 .notion-blog-card-title {
@@ -1004,12 +1094,14 @@
   background: var(--color-surface) !important;
 }
 
-.notion-page .notion-expertise-card {
-  background: var(--color-bg-subtle) !important;
+.notion-page .notion-expertise-card:hover {
+  border-color: var(--color-border-hover) !important;
+  box-shadow: 0 8px 24px var(--color-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
 }
 
-.notion-page .notion-blog-card {
-  background: var(--color-bg-subtle) !important;
+.notion-page .notion-blog-card:hover {
+  border-color: var(--color-border-hover) !important;
+  box-shadow: 0 12px 32px var(--color-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
 }
 
 /* Borders */
@@ -1020,19 +1112,6 @@
 .notion-page .notion-hero-photo {
   border: 1px solid var(--color-border) !important;
   box-shadow: 0 20px 40px -12px var(--color-shadow) !important;
-}
-
-.notion-page .notion-expertise-card {
-  border: 1px solid var(--color-border) !important;
-}
-
-.notion-page .notion-expertise-card:hover {
-  border-color: var(--color-border-hover) !important;
-  box-shadow: 0 8px 24px var(--color-shadow) !important;
-}
-
-.notion-page .notion-blog-card {
-  border: 1px solid var(--color-border) !important;
 }
 
 .notion-page .notion-news-item {
