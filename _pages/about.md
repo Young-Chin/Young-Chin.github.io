@@ -118,40 +118,59 @@ redirect_from:
     <h2 class="notion-h2 reveal">Blog</h2>
     <div class="notion-blog-grid reveal-stagger">
       {% for post in site.posts limit:6 %}
-        {% assign card_bg = '' %}
-        {% assign card_icon = '' %}
+        {% assign card_palette = 'palette-sand' %}
+        {% assign card_motif = 'motif-frame' %}
+        {% assign card_label = 'Notes' %}
         {% assign short_title = post.title %}
         {% if post.title contains '05/24' %}
-          {% assign card_bg = 'linear-gradient(135deg, #e5f2fc 0%, #cce0f5 100%)' %}
-          {% assign card_icon = '🚀' %}
+          {% assign card_palette = 'palette-sky' %}
+          {% assign card_motif = 'motif-orbit' %}
+          {% assign card_label = 'AIGC' %}
           {% assign short_title = 'AIGC Weekly 05/24' %}
         {% elsif post.title contains '05/17' %}
-          {% assign card_bg = 'linear-gradient(135deg, #f3ebf9 0%, #e4d6f0 100%)' %}
-          {% assign card_icon = '✨' %}
+          {% assign card_palette = 'palette-lilac' %}
+          {% assign card_motif = 'motif-beam' %}
+          {% assign card_label = 'AIGC' %}
           {% assign short_title = 'AIGC Weekly 05/17' %}
         {% elsif post.title contains 'Missing Semester' %}
-          {% assign card_bg = 'linear-gradient(135deg, #f9f3dc 0%, #f0e6c0 100%)' %}
-          {% assign card_icon = '🎓' %}
+          {% assign card_palette = 'palette-ochre' %}
+          {% assign card_motif = 'motif-columns' %}
+          {% assign card_label = 'Learning' %}
           {% assign short_title = 'The Missing Semester' %}
         {% elsif post.title contains 'Simplex' %}
-          {% assign card_bg = 'linear-gradient(135deg, #e8f1ec 0%, #d0e4db 100%)' %}
-          {% assign card_icon = '📐' %}
+          {% assign card_palette = 'palette-moss' %}
+          {% assign card_motif = 'motif-grid' %}
+          {% assign card_label = 'Math' %}
           {% assign short_title = 'Simplex Method' %}
         {% elsif post.title contains 'Synthetic Image Detection' %}
-          {% assign card_bg = 'linear-gradient(135deg, #fae9f1 0%, #f0d4e4 100%)' %}
-          {% assign card_icon = '🔍' %}
+          {% assign card_palette = 'palette-rose' %}
+          {% assign card_motif = 'motif-lens' %}
+          {% assign card_label = 'Research' %}
           {% assign short_title = 'Synthetic Image Detection' %}
         {% elsif post.title contains 'Watermark' %}
-          {% assign card_bg = 'linear-gradient(135deg, #f5ede9 0%, #e8ddd0 100%)' %}
-          {% assign card_icon = '💧' %}
+          {% assign card_palette = 'palette-clay' %}
+          {% assign card_motif = 'motif-arc' %}
+          {% assign card_label = 'Vision' %}
           {% assign short_title = 'Watermark Removal' %}
+        {% elsif post.title contains 'DeepTalk' %}
+          {% assign card_palette = 'palette-slate' %}
+          {% assign card_motif = 'motif-wave' %}
+          {% assign card_label = 'Agent' %}
+          {% assign short_title = 'DeepTalk Agent' %}
+        {% elsif post.title contains 'Know Each Other' %}
+          {% assign card_palette = 'palette-ink' %}
+          {% assign card_motif = 'motif-signal' %}
+          {% assign card_label = 'Memory' %}
+          {% assign short_title = 'Know Each Other' %}
         {% endif %}
-        <a href="{{ base_path }}{{ post.url }}" class="notion-blog-card reveal" title="{{ post.title }}">
-          <div class="notion-blog-card-image" style="background: {{ card_bg }};">
-            <span class="notion-blog-card-icon">{{ card_icon }}</span>
+        <a href="{{ base_path }}{{ post.url }}" class="notion-blog-card notion-blog-card--{{ card_palette }} notion-blog-card--{{ card_motif }} reveal" title="{{ post.title }}">
+          <div class="notion-blog-card-image">
+            <span class="notion-blog-card-cover-meta">{{ card_label }}</span>
+            <h3 class="notion-blog-card-title">{{ short_title }}</h3>
+            <span class="notion-blog-card-mark" aria-hidden="true"></span>
           </div>
           <div class="notion-blog-card-content">
-            <h3 class="notion-blog-card-title">{{ short_title }}</h3>
+            <span class="notion-blog-card-link">Read article</span>
           </div>
         </a>
       {% endfor %}
