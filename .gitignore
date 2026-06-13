@@ -2,3 +2,4 @@ _site/
 .superpowers/
 
 .DS_Store
+.worktrees/
