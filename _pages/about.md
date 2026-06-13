@@ -83,6 +83,10 @@ redirect_from:
     <h2 class="notion-h2 reveal">News</h2>
     <div class="notion-news-list reveal">
       <div class="notion-news-item">
+        <span class="notion-news-date">Jun 2026</span>
+        <span class="notion-news-text">Open-sourced <a href="https://github.com/Young-Chin/know-each-other" class="notion-link">Know Each Other</a>, a Claude skill that builds persistent psychological profiles so AI can truly know you across sessions.</span>
+      </div>
+      <div class="notion-news-item">
         <span class="notion-news-date">May 2026</span>
         <span class="notion-news-text">Open-sourced <a href="https://github.com/Young-Chin/DeepTalk-Agent" class="notion-link">DeepTalk Agent</a>, a fully local voice AI assistant running on macOS Apple Silicon with MLX.</span>
       </div>
