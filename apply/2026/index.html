@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>秦洋 / Bob - 简历</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0c12;
+      --bg-soft: #12121c;
+      --surface: rgba(255,255,255,0.035);
+      --border: rgba(255,255,255,0.06);
+      --text: #ececf3;
+      --text-dim: #9b9ba8;
+      --text-faint: #55555f;
+      --accent-1: #9b6dff;
+      --accent-2: #5a8aff;
+      --accent-warm: #ff8a5c;
+      --accent-agent: #2dd4bf;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Full-screen sections */
+    .slide {
+      min-height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 60px 40px;
+    }
+
+    .slide-inner {
+      max-width: 1100px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Ambient background blobs */
+    .slide::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.08;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .slide:nth-child(1)::before {
+      background: radial-gradient(circle, var(--accent-1), transparent 70%);
+      top: -10%;
+      right: -10%;
+    }
+    .slide:nth-child(2)::before {
+      background: radial-gradient(circle, var(--accent-2), transparent 70%);
+      bottom: -10%;
+      left: -10%;
+    }
+    .slide:nth-child(3)::before {
+      background: radial-gradient(circle, var(--accent-warm), transparent 70%);
+      top: 10%;
+      left: 30%;
+    }
+    .slide:nth-child(4)::before {
+      background: radial-gradient(circle, var(--accent-agent), transparent 70%);
+      bottom: -5%;
+      right: -5%;
+    }
+
+    /* Typography scale */
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-1);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    h1 .gradient {
+      background: linear-gradient(135deg, #fff 0%, #b8a5f0 60%, var(--accent-2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: clamp(16px, 2vw, 22px);
+      color: var(--text-dim);
+      font-weight: 300;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .body-text {
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    /* Decorative line */
+    .deco-line {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+      margin: 24px 0;
+    }
+
+    /* Layout helpers */
+    .flex-row {
+      display: flex;
+      gap: 80px;
+      align-items: flex-start;
+    }
+
+    .flex-row .left {
+      flex: 0 0 40%;
+    }
+
+    .flex-row .right {
+      flex: 1;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* Cards - cleaner */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(155, 109, 255, 0.2);
+    }
+
+    .card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .card p, .card li {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.8;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 6px;
+    }
+
+    .card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-1);
+      opacity: 0.7;
+    }
+
+    .highlight {
+      color: #d4c8f7;
+      font-weight: 500;
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .tag {
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      background: transparent;
+      transition: all 0.3s;
+    }
+
+    .tag:hover {
+      border-color: var(--accent-1);
+      color: var(--text);
+      background: rgba(155, 109, 255, 0.08);
+    }
+
+    .tag.primary {
+      background: linear-gradient(135deg, rgba(155,109,255,0.12), rgba(90,138,255,0.08));
+      border-color: rgba(155,109,255,0.25);
+      color: #c8b8f0;
+    }
+
+    /* Meta row */
+    .meta {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      font-size: 14px;
+      color: var(--text-faint);
+    }
+
+    .meta-item strong {
+      display: block;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    /* Work grid */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .work-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      transition: all 0.4s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(155, 109, 255, 0.2);
+    }
+
+    .work-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .work-card p {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.8;
+    }
+
+    /* Company header inline */
+    .company-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .company-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .company-row h3 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .company-row p {
+      font-size: 13px;
+      color: var(--text-faint);
+      margin: 2px 0 0;
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-faint);
+      font-size: 12px;
+      letter-spacing: 1px;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-hint svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* Responsive */
+    @media (max-width: 840px) {
+      .slide { padding: 40px 24px; }
+      .flex-row { flex-direction: column; gap: 40px; }
+      .flex-row .left { flex: 1; }
+      .work-grid { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .meta { gap: 20px; }
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 36px; }
+      h2 { font-size: 28px; }
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Clickable work-card indicator */
+    .work-card[data-detail] {
+      cursor: pointer;
+      position: relative;
+    }
+    .work-card[data-detail]::after {
+      content: '↗';
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      font-size: 13px;
+      color: var(--text-faint);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .work-card[data-detail]:hover::after {
+      opacity: 0.5;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(0,0,0,.65); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .35s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: auto; }
+
+    .modal {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      max-width: 780px; width: 90%;
+      max-height: 82vh;
+      overflow-y: auto;
+      padding: 44px 40px 36px;
+      position: relative;
+      box-shadow: 0 32px 80px rgba(0,0,0,.6);
+      transform: translateY(20px) scale(.97);
+      transition: transform .4s ease;
+    }
+    .modal-overlay.open .modal { transform: none; }
+
+    .modal-close {
+      position: absolute; top: 16px; right: 20px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .25s;
+    }
+    .modal-close:hover { border-color: var(--accent-1); color: var(--text); }
+
+    .modal h3 {
+      font-size: 24px; font-weight: 700;
+      margin-bottom: 32px;
+      padding-right: 40px;
+    }
+    .modal-section { margin-bottom: 28px; }
+    .modal-section h4 {
+      font-size: 14px; font-weight: 600;
+      color: var(--accent-1);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .modal-section p, .modal-section li {
+      font-size: 15px; color: var(--text-dim); line-height: 1.9;
+    }
+    .modal-section ul { list-style: none; padding: 0; }
+    .modal-section li {
+      position: relative; padding-left: 16px; margin-bottom: 6px;
+    }
+    .modal-section li::before {
+      content: ''; position: absolute; left: 0; top: 11px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent-1); opacity: 0.7;
+    }
+
+    /* Image placeholder */
+    .img-placeholder {
+      margin-top: 20px;
+      border: 1.5px dashed var(--border);
+      border-radius: 14px;
+      padding: 48px;
+      text-align: center;
+      color: var(--text-faint);
+      font-size: 14px;
+      transition: border-color .3s;
+    }
+    .img-placeholder:hover { border-color: rgba(155,109,255,.25); }
+    .img-placeholder svg { display: block; margin: 0 auto 10px; opacity: 0.3; }
+
+    .highlight { color: #d4c8f7; font-weight: 500; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,.88); backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .35s ease;
+      cursor: zoom-out;
+    }
+    .lightbox.open { opacity: 1; pointer-events: auto; }
+    .lightbox img { max-width: 88vw; max-height: 88vh; border-radius: 16px; }
+    .lightbox-close {
+      position: absolute; top: 24px; right: 28px;
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.15); background: rgba(0,0,0,.4);
+      color: #fff; font-size: 22px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; z-index: 10;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,.1); }
+
+    .modal img { cursor: zoom-in; }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Profile -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <div class="eyebrow" style="font-size: 16px; letter-spacing: 4px; margin-bottom: 0;">Hi~ ByteDance !</div>
+      </div>
+
+      <div class="flex-row reveal" style="align-items: center; gap: 120px;">
+        <div class="left">
+          <h1 style="margin-bottom: 16px; font-size: clamp(52px, 6.5vw, 84px);">秦洋 <span class="gradient">/ Bob</span></h1>
+          <div class="deco-line" style="margin-bottom: 36px;"></div>
+
+          <div style="margin-bottom: 36px;">
+            <div class="tags" style="margin: 0;">
+              <span class="tag" style="font-size: 14px; padding: 10px 20px;">Agentic Engineering</span>
+              <span class="tag" style="font-size: 14px; padding: 10px 20px;">Multimodality</span>
+              <span class="tag" style="font-size: 14px; padding: 10px 20px;">AIGC</span>
+            </div>
+          </div>
+
+          <p style="font-size: 18px; color: var(--text-dim); font-style: italic; line-height: 1.6; max-width: 360px;">
+            "人生就是一个字：Passion!!!"
+          </p>
+        </div>
+
+        <div class="right">
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <div>
+              <div style="font-size: 26px; color: var(--text); font-weight: 600;">趣丸科技</div>
+              <div style="font-size: 18px; color: var(--text-dim); font-weight: 400; margin-top: 2px;">多模态 · Agent · 高级算法工程师</div>
+            </div>
+            <div>
+              <div style="font-size: 26px; color: var(--text); font-weight: 600;">光魔科技</div>
+              <div style="font-size: 18px; color: var(--text-dim); font-weight: 400; margin-top: 2px;">AIGC · 算法工程师</div>
+            </div>
+            <div style="height: 1px; background: var(--border); margin: 8px 0;"></div>
+            <div>
+              <div style="font-size: 26px; color: var(--text); font-weight: 600;">澳门科技大学</div>
+              <div style="font-size: 18px; color: var(--text-dim); font-weight: 400; margin-top: 2px;">理学硕士 · 应用数学与数据科学</div>
+            </div>
+            <div>
+              <div style="font-size: 26px; color: var(--text); font-weight: 600;">佛山大学</div>
+              <div style="font-size: 18px; color: var(--text-dim); font-weight: 400; margin-top: 2px;">工学学士 · 数据科学与大数据技术</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>SCROLL</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- Slide 2: AIGC -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="company-row">
+        <div class="company-avatar">光</div>
+        <div>
+          <h3>光魔科技（深圳）有限公司</h3>
+          <p>白日梦AI/MagicLightAI · 算法工程师</p>
+        </div>
+      </div>
+
+      <h2 style="margin-bottom: 12px;"><span style="color: var(--accent-1);">AIGC产品全流程研发</span></h2>
+      <p class="body-text reveal" style="max-width: 720px; margin-bottom: 32px;">
+        参与海内外 AI 长视频生成产品全流程算法研发，覆盖 <span class="highlight">文本 → 图像 → 视频</span> 全链路，深入理解 AIGC 业务流与算法落地。
+      </p>
+
+      <div class="grid-2 reveal" style="grid-template-columns: repeat(3, 1fr); gap: 16px;">
+        <div class="work-card">
+          <h4>大模型效果与成本优化</h4>
+          <p>重构故事转剧本 LLM；优化影视内容提示词工程；调用成本降低 <span class="highlight">40%</span>；FLUX 提示词扩写优化。</p>
+        </div>
+        <div class="work-card" data-detail="face">
+          <h4>人脸一致性 / 换脸</h4>
+          <p>从零构建人脸处理模块：<span class="highlight">人物重定位 + InstantID / PuLID 一致性 + 人脸融合</span>，达到消费级图像质量。</p>
+        </div>
+        <div class="work-card" data-detail="region">
+          <h4>区域提示词控制</h4>
+          <p>基于 Kolors 实现 <span class="highlight">Attention 层区域隔离</span> + IPAdapter，实现生成内容与人物的区域控制。</p>
+        </div>
+        <div class="work-card" data-detail="free-control">
+          <h4>软硬结合的区域控制</h4>
+          <p><span class="highlight">Inpainting + Pose + IPAdapter</span> 方案，缓解区域间干扰，减少人物动作畸形。</p>
+        </div>
+        <div class="work-card">
+          <h4>人物对口型</h4>
+          <p><span class="highlight">Audio2Lips + FaceDriven</span> 融合方案，短耗时低开销，提升人脸动态效果与对口型精准度。</p>
+        </div>
+        <div class="work-card">
+          <h4>图生视频 / 动作驱动</h4>
+          <p>开源 DynamiCrafter / CogVideoX / Wan2.1；闭源 Pika / RunWay / MiniMax API 对接与优化。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3: Multimodality -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="company-row">
+        <div class="company-avatar" style="background: linear-gradient(135deg, var(--accent-warm), #ff5e7a);">趣</div>
+        <div>
+          <h3>广州趣丸网络科技有限公司</h3>
+          <p>All Voice Lab 事业部 · 高级算法工程师</p>
+        </div>
+      </div>
+
+      <h2 style="margin-bottom: 32px;"> <span style="color: var(--accent-warm);">多模态视频理解与内容感知</span></h2>
+
+      <div class="reveal" style="display: flex; flex-direction: column; gap: 16px; max-width: 800px;">
+        <div class="work-card">
+          <h4>视频字幕 OCR</h4>
+          <p>优化视频字幕 OCR 系统架构与难样本训练，效果 <span class="highlight">98%</span> / 性能提升 <span class="highlight">85%</span>；微调 VLM-based OCR 达 <span class="highlight">99%+</span> 准确率、80IPS；构建含 3 类指标 15 个模型的 Benchmark。</p>
+        </div>
+        <div class="work-card">
+          <h4>多模态说话人分割</h4>
+          <p><strong>V1:</strong> 3D-Speaker + 唇动检测 + 人脸追踪 + 改进聚类，相对纯声纹提升 <span class="highlight">10 个点</span>；<br><strong>V2:</strong> 多模态大模型匹配（ASR + OCR + 多轮对话 + 全局角色管理）。</p>
+        </div>
+        <div class="work-card">
+          <h4>多模态影视数据标注</h4>
+          <p>基于 Gemini 为长视频（2h+）做细粒度多维度数据标注，覆盖 <span class="highlight">对话、场景、镜头、角色</span> 等类别，支撑下游模型训练。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4: Agent -->
+  <section class="slide">
+    <div class="slide-inner">
+      <h2 style="margin-bottom: 48px;"> <span style="color: var(--accent-agent);">Agent 探索与应用</span></h2>
+
+      <div class="grid-2 reveal" style="gap: 20px;">
+        <div class="card">
+          <h4>Agent 系统优化</h4>
+          <ul>
+            <li>构建分层分级、自然学习与衰退的 <span class="highlight">记忆系统</span>，节省 80% 记忆 token 加载</li>
+            <li>优化 <span class="highlight">compact 机制</span>，提升长任务的可持续性与上下文知识沉淀</li>
+            <li>构建个性化 skill(know each-other)，初始化并持续优化 Agent 行为风格与用户画像</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>智能营销 Agent</h4>
+          <ul>
+            <li>从 0 到 1 设计与构建营销 Agent 系统</li>
+            <li>基于 <span class="highlight">LangGraph</span> 设计 常驻 / 业务 / 执行 三个 Node 层级</li>
+            <li>设计人机交互、多任务协同、目标持久化、知识沉淀等特性</li>
+            <li>与市场团队共建 AI Native 团队，实现营销业务闭环与新范式探索</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>AutoResearch on OCR</h4>
+          <ul>
+            <li>基于 <span class="highlight">AutoResearch</span> 范式框架进行 OCR 模型的推理速度优化</li>
+            <li>探索 <span class="highlight">12 个模型</span>的性能极限，并沉淀具体算法场景使用经验</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Agent for Node-based workflow</h4>
+          <ul>
+            <li>牵头完成团队内部原子能力的 <span class="highlight">Node 化与 Skill 化</span></li>
+            <li>协助内部画布流产品进行 Agent 化改造与workflow生成</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-top: 60px; text-align: center;">
+        <p style="font-size: 15px; color: var(--text-faint);">期待与团队一起探索AI领域的边界</p>
+        <div class="deco-line" style="margin: 24px auto; width: 32px; background: linear-gradient(90deg, var(--accent-agent), var(--accent-2));"></div>
+      </div>
+    </div>
+  </section>
+
+<!-- Modal Overlay -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modal-close">&times;</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+(function(){
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Modal logic
+  const overlay = document.getElementById('modal-overlay');
+  const content = document.getElementById('modal-content');
+  const closeBtn = document.getElementById('modal-close');
+
+  const detailContent = {
+    face: `
+      <h3>如何在多重控制下做到 ID 一致且保真</h3>
+      <div class="modal-section">
+        <h4>背景</h4>
+        <ul>
+          <li>生图的控制叠加使得人脸 ID 信息被削弱（Lora / IPA / ControlNet）</li>
+          <li>主流 ID-preserving 算法 InstantID / PuLID / Lora 存在不足：侧脸和相似度难以两全</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h4>技术演进路线</h4>
+        <p><span class="highlight">FaceSwap</span> &rarr; <span class="highlight">Face-Inpainting</span> &rarr; <span class="highlight">End2End</span></p>
+        <ul>
+          <li><strong>FaceSwap</strong>：原图 + 人脸检测识别 + merge 新人脸图。优点：一致与保真，与多重控制解耦。缺点：融合边缘瑕疵，策略逻辑重，难以自适应。</li>
+          <li><strong>Face-Inpainting</strong>：原图 + ReID + 人脸 mask + 生成模型 inpainting。优点：更精准优雅的人脸定位，inpainting 显著减少融合瑕疵，一致与保真不变。缺点：复杂场景下 mask 成为瓶颈。</li>
+          <li><strong>End2End</strong>：UNO-Face 人脸场景融合，加入人脸 loss。优点：解决融合瑕疵，人脸更自然。缺点：增加一次模型推理。</li>
+        </ul>
+      </div>
+      <div class="modal-section">
+        <h4>成果</h4>
+        <p>人物高一致性与高保真成为产品特色，人脸方案整合复用在其他产品。</p>
+      </div>
+      <div class="img-placeholder" style="padding: 0; border: none; overflow: hidden; border-radius: 14px;">
+        <img src="./images/face-consistency.png" alt="人脸一致性技术方案" style="width: 100%; display: block; border-radius: 14px;">
+      </div>`,
+    region: `
+      <h3>如何做到精准的图像区域控制</h3>
+      <div class="modal-section">
+        <h4>背景</h4>
+        <p>文生图中提示词描述到图像空间存在映射关系，但无法精准控制。</p>
+      </div>
+      <div class="modal-section">
+        <h4>技术方案</h4>
+        <p>构建区域拆分提示词，再对 attention map 进行对应的区域切分（或 mask），分别进行 attn 计算并叠加 IPA 特征，再拼接回去进行生成。</p>
+      </div>
+      <div class="modal-section">
+        <h4>成果</h4>
+        <p>实现区域控制的提示词到图像映射，满足产品可控性和分镜特性。</p>
+      </div>
+      <div style="display: flex; gap: 16px; margin-top: 20px;">
+        <div style="flex: 1; border-radius: 14px; overflow: hidden;">
+          <img src="./images/region-control-1.png" alt="区域控制方案1" style="width: 100%; display: block;">
+        </div>
+        <div style="flex: 1; border-radius: 14px; overflow: hidden;">
+          <img src="./images/region-control-2.png" alt="区域控制方案2" style="width: 100%; display: block;">
+        </div>
+      </div>`,
+    'free-control': `
+      <h3>如何做到 Free Control</h3>
+      <div class="modal-section">
+        <h4>背景</h4>
+        <p>基于控制信号的生成容易形成人物姿态瑕疵，没有控制信号无法实现分镜控制。</p>
+      </div>
+      <div class="modal-section">
+        <h4>技术方案</h4>
+        <p>基于区域控制实现底图生成 + 构建分镜 mask 与背景 + 基于区域进行 inpainting + 融入控制信号引导。</p>
+      </div>
+      <div class="modal-section">
+        <h4>成果</h4>
+        <p>满足分镜动作控制，但又不会导致人物动作瑕疵。</p>
+      </div>
+      <div class="img-placeholder" style="padding: 0; border: none; overflow: hidden; border-radius: 14px;">
+        <img src="./images/free-control.png" alt="Free Control 方案" style="width: 100%; display: block; border-radius: 14px;">
+      </div>`
+  };
+
+  function openModal(key) {
+    content.innerHTML = detailContent[key] || '';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.work-card[data-detail]').forEach(card => {
+    card.addEventListener('click', () => openModal(card.dataset.detail));
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+
+  // Lightbox logic
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  function openLightbox(src) {
+    lightboxImg.src = src;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  content.addEventListener('click', (e) => {
+    if (e.target.tagName === 'IMG') openLightbox(e.target.src);
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target.classList.contains('lightbox-close')) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
+})();
+</script>
+</body>
+</html>
