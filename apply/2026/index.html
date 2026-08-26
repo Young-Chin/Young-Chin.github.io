@@ -174,6 +174,10 @@
       gap: 24px;
     }
 
+    .aigc-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
     /* Cards - cleaner */
     .card {
       background: var(--surface);
@@ -379,6 +383,7 @@
       .flex-row .left { flex: 1; }
       .work-grid { grid-template-columns: 1fr; }
       .grid-2 { grid-template-columns: 1fr; }
+      .aigc-grid { grid-template-columns: 1fr; }
       .meta { gap: 20px; }
     }
 
@@ -536,7 +541,7 @@
           </div>
 
           <p style="font-size: 18px; color: var(--text-dim); font-style: italic; line-height: 1.6; max-width: 360px;">
-            "人生就是一个字：Passion!!!"
+            "Don't be afraid, be passionate!"
           </p>
         </div>
 
@@ -544,11 +549,11 @@
           <div style="display: flex; flex-direction: column; gap: 24px;">
             <div>
               <div style="font-size: 26px; color: var(--text); font-weight: 600;">趣丸科技</div>
-              <div style="font-size: 18px; color: var(--text-dim); font-weight: 400; margin-top: 2px;">多模态 · Agent · 高级算法工程师</div>
+              <div style="font-size: 18px; color: var(--text-dim); font-weight: 400; margin-top: 2px;">多模态 · Agent · 高级算法工程师 · 2025.08 - 至今</div>
             </div>
             <div>
               <div style="font-size: 26px; color: var(--text); font-weight: 600;">光魔科技</div>
-              <div style="font-size: 18px; color: var(--text-dim); font-weight: 400; margin-top: 2px;">AIGC · 算法工程师</div>
+              <div style="font-size: 18px; color: var(--text-dim); font-weight: 400; margin-top: 2px;">AIGC · 算法工程师 · 2024.06 - 2025.07</div>
             </div>
             <div style="height: 1px; background: var(--border); margin: 8px 0;"></div>
             <div>
@@ -576,7 +581,7 @@
         <div class="company-avatar">光</div>
         <div>
           <h3>光魔科技（深圳）有限公司</h3>
-          <p>白日梦AI/MagicLightAI · 算法工程师</p>
+          <p>白日梦AI/MagicLightAI · 算法工程师 · 2024.06 - 2025.07</p>
         </div>
       </div>
 
@@ -585,10 +590,10 @@
         参与海内外 AI 长视频生成产品全流程算法研发，覆盖 <span class="highlight">文本 → 图像 → 视频</span> 全链路，深入理解 AIGC 业务流与算法落地。
       </p>
 
-      <div class="grid-2 reveal" style="grid-template-columns: repeat(3, 1fr); gap: 16px;">
+      <div class="grid-2 aigc-grid reveal" style="gap: 16px;">
         <div class="work-card">
           <h4>大模型效果与成本优化</h4>
-          <p>重构故事转剧本 LLM；优化影视内容提示词工程；调用成本降低 <span class="highlight">40%</span>；FLUX 提示词扩写优化。</p>
+          <p>重构故事转剧本 LLM；优化影视内容提示词工程，提升连续性与相关性；调用成本降低 <span class="highlight">40%</span>；优化适配 FLUX 的提示词扩写，解决角色融合与动作瑕疵。</p>
         </div>
         <div class="work-card" data-detail="face">
           <h4>人脸一致性 / 换脸</h4>
@@ -608,7 +613,7 @@
         </div>
         <div class="work-card">
           <h4>图生视频 / 动作驱动</h4>
-          <p>开源 DynamiCrafter / CogVideoX / Wan2.1；闭源 Pika / RunWay / MiniMax API 对接与优化。</p>
+          <p>实操 DynamiCrafter / CogVideoX / Wan2.1 等开源模型及后处理优化；负责 Pika / RunWay / MiniMax API 对接与测试，熟悉提示词控制及各类动作驱动视频模型。</p>
         </div>
       </div>
     </div>
@@ -621,7 +626,7 @@
         <div class="company-avatar" style="background: linear-gradient(135deg, var(--accent-warm), #ff5e7a);">趣</div>
         <div>
           <h3>广州趣丸网络科技有限公司</h3>
-          <p>All Voice Lab 事业部 · 高级算法工程师</p>
+          <p>All Voice Lab 事业部 · 高级算法工程师 · 2025.08 - 至今</p>
         </div>
       </div>
 
@@ -630,15 +635,15 @@
       <div class="reveal" style="display: flex; flex-direction: column; gap: 16px; max-width: 800px;">
         <div class="work-card">
           <h4>视频字幕 OCR</h4>
-          <p>优化视频字幕 OCR 系统架构与难样本训练，效果 <span class="highlight">98%</span> / 性能提升 <span class="highlight">85%</span>；微调 VLM-based OCR 达 <span class="highlight">99%+</span> 准确率、80IPS；构建含 3 类指标 15 个模型的 Benchmark。</p>
+          <p>优化传统视频字幕 OCR 前后处理与难样本训练，效果提升至 <span class="highlight">98%</span>、性能提升 <span class="highlight">85%</span>；微调 VLM-based OCR 达 <span class="highlight">99%+</span> 准确率、80IPS；构建含 3 类指标、15 个模型的 Benchmark，并基于 AutoResearch 探索模型选型、推理引擎与 Pipeline 的速度优化最佳实践。</p>
         </div>
         <div class="work-card">
           <h4>多模态说话人分割</h4>
-          <p><strong>V1:</strong> 3D-Speaker + 唇动检测 + 人脸追踪 + 改进聚类，相对纯声纹提升 <span class="highlight">10 个点</span>；<br><strong>V2:</strong> 多模态大模型匹配（ASR + OCR + 多轮对话 + 全局角色管理）。</p>
+          <p><strong>V1:</strong> 3D-Speaker + 唇动检测 + 人脸追踪 + 改进聚类，相对纯声纹提升 <span class="highlight">10 个点</span>；<br><strong>V2:</strong> 多模态大模型匹配（ASR + OCR + 多轮对话 + 全局角色管理）；<br><strong>V3:</strong> 基于 Qwen-3 Omni 进行说话人分离 SFT，构造 <span class="highlight">5 万条</span>数据对进行 LoRA 训练，整体效果提升 <span class="highlight">6%</span>。</p>
         </div>
         <div class="work-card">
-          <h4>多模态影视数据标注</h4>
-          <p>基于 Gemini 为长视频（2h+）做细粒度多维度数据标注，覆盖 <span class="highlight">对话、场景、镜头、角色</span> 等类别，支撑下游模型训练。</p>
+          <h4>多模态影视数据理解</h4>
+          <p>基于 Gemini 为长视频（2h+）做细粒度多维度数据理解，覆盖 <span class="highlight">对话、场景、镜头、角色</span> 等类别，支撑下游模型训练。</p>
         </div>
       </div>
     </div>
@@ -655,30 +660,14 @@
           <ul>
             <li>构建分层分级、自然学习与衰退的 <span class="highlight">记忆系统</span>，节省 80% 记忆 token 加载</li>
             <li>优化 <span class="highlight">compact 机制</span>，提升长任务的可持续性与上下文知识沉淀</li>
-            <li>构建个性化 skill(know each-other)，初始化并持续优化 Agent 行为风格与用户画像</li>
+            <li>构建个性化 <span class="highlight">skill</span>，初始化并持续优化 Agent 行为风格与用户画像</li>
           </ul>
         </div>
         <div class="card">
           <h4>智能营销 Agent</h4>
           <ul>
-            <li>从 0 到 1 设计与构建营销 Agent 系统</li>
-            <li>基于 <span class="highlight">LangGraph</span> 设计 常驻 / 业务 / 执行 三个 Node 层级</li>
-            <li>设计人机交互、多任务协同、目标持久化、知识沉淀等特性</li>
-            <li>与市场团队共建 AI Native 团队，实现营销业务闭环与新范式探索</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h4>AutoResearch on OCR</h4>
-          <ul>
-            <li>基于 <span class="highlight">AutoResearch</span> 范式框架进行 OCR 模型的推理速度优化</li>
-            <li>探索 <span class="highlight">12 个模型</span>的性能极限，并沉淀具体算法场景使用经验</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h4>Agent for Node-based workflow</h4>
-          <ul>
-            <li>牵头完成团队内部原子能力的 <span class="highlight">Node 化与 Skill 化</span></li>
-            <li>协助内部画布流产品进行 Agent 化改造与workflow生成</li>
+            <li>构建 <span class="highlight">通用 + 业务双流</span> Agent 系统，并行协同 ReAct 与 Graph-execution 范式</li>
+            <li>基于 <span class="highlight">LangGraph</span> 构建 Agentic Graph，动态编排业务图，提升流程灵活性与执行厚度</li>
           </ul>
         </div>
       </div>
