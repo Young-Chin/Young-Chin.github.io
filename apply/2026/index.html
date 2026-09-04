@@ -300,6 +300,17 @@
       transition: all 0.4s ease;
     }
 
+    .work-card-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .work-card-link:focus-visible {
+      outline: 2px solid var(--accent-warm);
+      outline-offset: 4px;
+    }
+
     .work-card:hover {
       transform: translateY(-4px);
       border-color: rgba(155, 109, 255, 0.2);
@@ -316,6 +327,36 @@
       font-size: 15px;
       color: var(--text-dim);
       line-height: 1.8;
+    }
+
+    .work-points {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .work-points li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .work-points li + li {
+      margin-top: 8px;
+    }
+
+    .work-points li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-warm);
+      opacity: 0.8;
     }
 
     /* Company header inline */
@@ -459,6 +500,24 @@
       margin-bottom: 32px;
       padding-right: 40px;
     }
+    .modal h4 {
+      font-size: 14px; font-weight: 600;
+      color: var(--accent-1);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin: 28px 0 12px;
+    }
+    .modal > p, .modal > li, .modal > ul {
+      font-size: 15px; color: var(--text-dim); line-height: 1.9;
+    }
+    .modal > ul { list-style: none; padding: 0; }
+    .modal > li, .modal > ul li {
+      position: relative; padding-left: 16px; margin-bottom: 6px;
+    }
+    .modal > li::before, .modal > ul li::before {
+      content: ''; position: absolute; left: 0; top: 11px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent-1); opacity: 0.7;
+    }
     .modal-section { margin-bottom: 28px; }
     .modal-section h4 {
       font-size: 14px; font-weight: 600;
@@ -492,6 +551,17 @@
     }
     .img-placeholder:hover { border-color: rgba(155,109,255,.25); }
     .img-placeholder svg { display: block; margin: 0 auto 10px; opacity: 0.3; }
+
+    .detail-image {
+      margin-top: 20px;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .detail-image img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+    }
 
     .highlight { color: #d4c8f7; font-weight: 500; }
 
@@ -636,10 +706,14 @@
       </p>
 
       <div class="reveal" style="display: flex; flex-direction: column; gap: 16px; max-width: 800px;">
-        <div class="work-card">
+        <a class="work-card work-card-link" href="/posts/video-subtitle-ocr-practice">
           <h4>视频字幕 OCR</h4>
-          <p>优化传统视频字幕 OCR 前后处理与难样本训练，效果提升至 <span class="highlight">98%</span>、性能提升 <span class="highlight">85%</span>；微调 VLM-based OCR 达 <span class="highlight">99%+</span> 准确率、80IPS；构建含 3 类指标、15 个模型的 Benchmark，并基于 AutoResearch 探索模型选型、推理引擎与 Pipeline 的速度优化最佳实践。</p>
-        </div>
+          <ul class="work-points">
+            <li>传统 OCR：优化前后处理与难样本训练，效果提升至 <span class="highlight">98%</span>，性能提升 <span class="highlight">85%</span>。</li>
+            <li>VLM-based OCR：准确率达 <span class="highlight">99%+</span>、性能达 <span class="highlight">80IPS</span>；构建含 3 类指标、15 个模型的 Benchmark。</li>
+            <li>AutoResearch：探索模型选型、推理引擎与 Pipeline 设计的速度优化最佳实践。</li>
+          </ul>
+        </a>
         <div class="work-card">
           <h4>多模态说话人分割</h4>
           <p><strong>V1:</strong> 3D-Speaker + 唇动检测 + 人脸追踪 + 改进聚类，相对纯声纹提升 <span class="highlight">10 个点</span>；<br><strong>V2:</strong> 多模态大模型匹配（ASR + OCR + 多轮对话 + 全局角色管理）；<br><strong>V3:</strong> 基于 Qwen3-Omni 进行说话人分离 SFT，构造 <span class="highlight">5w 条</span>数据进行 LoRA 训练，整体效果提升 <span class="highlight">6%</span>。</p>
@@ -698,6 +772,7 @@
   <img id="lightbox-img" src="" alt="">
 </div>
 
+<script src="./details.js"></script>
 <script>
 (function(){
   // Scroll reveal
@@ -711,72 +786,7 @@
   const content = document.getElementById('modal-content');
   const closeBtn = document.getElementById('modal-close');
 
-  const detailContent = {
-    face: `
-      <h3>如何在多重控制下做到 ID 一致且保真</h3>
-      <div class="modal-section">
-        <h4>背景</h4>
-        <ul>
-          <li>生图的控制叠加使得人脸 ID 信息被削弱（Lora / IPA / ControlNet）</li>
-          <li>主流 ID-preserving 算法 InstantID / PuLID / Lora 存在不足：侧脸和相似度难以两全</li>
-        </ul>
-      </div>
-      <div class="modal-section">
-        <h4>技术演进路线</h4>
-        <p><span class="highlight">FaceSwap</span> &rarr; <span class="highlight">Face-Inpainting</span> &rarr; <span class="highlight">End2End</span></p>
-        <ul>
-          <li><strong>FaceSwap</strong>：原图 + 人脸检测识别 + merge 新人脸图。优点：一致与保真，与多重控制解耦。缺点：融合边缘瑕疵，策略逻辑重，难以自适应。</li>
-          <li><strong>Face-Inpainting</strong>：原图 + ReID + 人脸 mask + 生成模型 inpainting。优点：更精准优雅的人脸定位，inpainting 显著减少融合瑕疵，一致与保真不变。缺点：复杂场景下 mask 成为瓶颈。</li>
-          <li><strong>End2End</strong>：UNO-Face 人脸场景融合，加入人脸 loss。优点：解决融合瑕疵，人脸更自然。缺点：增加一次模型推理。</li>
-        </ul>
-      </div>
-      <div class="modal-section">
-        <h4>成果</h4>
-        <p>人物高一致性与高保真成为产品特色，人脸方案整合复用在其他产品。</p>
-      </div>
-      <div class="img-placeholder" style="padding: 0; border: none; overflow: hidden; border-radius: 14px;">
-        <img src="./images/face-consistency.png" alt="人脸一致性技术方案" style="width: 100%; display: block; border-radius: 14px;">
-      </div>`,
-    region: `
-      <h3>如何做到精准的图像区域控制</h3>
-      <div class="modal-section">
-        <h4>背景</h4>
-        <p>文生图中提示词描述到图像空间存在映射关系，但无法精准控制。</p>
-      </div>
-      <div class="modal-section">
-        <h4>技术方案</h4>
-        <p>构建区域拆分提示词，再对 attention map 进行对应的区域切分（或 mask），分别进行 attn 计算并叠加 IPA 特征，再拼接回去进行生成。</p>
-      </div>
-      <div class="modal-section">
-        <h4>成果</h4>
-        <p>实现区域控制的提示词到图像映射，满足产品可控性和分镜特性。</p>
-      </div>
-      <div style="display: flex; gap: 16px; margin-top: 20px;">
-        <div style="flex: 1; border-radius: 14px; overflow: hidden;">
-          <img src="./images/region-control-1.png" alt="区域控制方案1" style="width: 100%; display: block;">
-        </div>
-        <div style="flex: 1; border-radius: 14px; overflow: hidden;">
-          <img src="./images/region-control-2.png" alt="区域控制方案2" style="width: 100%; display: block;">
-        </div>
-      </div>`,
-    'free-control': `
-      <h3>如何做到 Free Control</h3>
-      <div class="modal-section">
-        <h4>背景</h4>
-        <p>基于控制信号的生成容易形成人物姿态瑕疵，没有控制信号无法实现分镜控制。</p>
-      </div>
-      <div class="modal-section">
-        <h4>技术方案</h4>
-        <p>基于区域控制实现底图生成 + 构建分镜 mask 与背景 + 基于区域进行 inpainting + 融入控制信号引导。</p>
-      </div>
-      <div class="modal-section">
-        <h4>成果</h4>
-        <p>满足分镜动作控制，但又不会导致人物动作瑕疵。</p>
-      </div>
-      <div class="img-placeholder" style="padding: 0; border: none; overflow: hidden; border-radius: 14px;">
-        <img src="./images/free-control.png" alt="Free Control 方案" style="width: 100%; display: block; border-radius: 14px;">
-      </div>`
-  };
+  const detailContent = window.applyDetails || {};
 
   function openModal(key) {
     content.innerHTML = detailContent[key] || '';
