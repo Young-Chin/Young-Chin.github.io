@@ -26,6 +26,7 @@ class ApplyMarketingPostTests(unittest.TestCase):
     def test_marketing_agent_article_exists_with_expected_permalink(self):
         post = POST_PATH.read_text(encoding="utf-8")
 
+        self.assertIn("layout: none", post)
         self.assertIn("title: '智能营销 Agent 系统架构图'", post)
         self.assertIn("permalink: /posts/smart-marketing-agent-architecture", post)
         self.assertIn("<html", post)
