@@ -1,0 +1,600 @@
+---
+layout: null
+title: '智能营销 Agent 系统架构图'
+date: 2026-09-04
+permalink: /posts/smart-marketing-agent-architecture
+tags:
+  - Agent
+  - Marketing
+  - System Architecture
+---
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="智能营销 Agent 系统技术架构：Goal 生命周期与双流 Agent 协作模型。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%230c6b62'/><path d='M4 8h8M8 4v8' stroke='white' stroke-width='2'/></svg>">
+  <title>智能营销 Agent 系统架构</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #5c6c77;
+      --line: #d8e0e4;
+      --paper: #f7faf9;
+      --surface: #ffffff;
+      --goal: #0c6b62;
+      --goal-soft: #e1f0ed;
+      --react: #15708c;
+      --react-soft: #e2f0f4;
+      --graph: #b65b22;
+      --graph-soft: #f9e8da;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--paper); }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 44px 0 72px;
+    }
+
+    .document-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      gap: 40px;
+      padding: 0 0 34px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--goal);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 720px;
+      margin-bottom: 16px;
+      font-size: 42px;
+      line-height: 1.15;
+      font-weight: 650;
+    }
+
+    .lede {
+      max-width: 740px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .header-meta {
+      align-self: end;
+      padding-left: 20px;
+      border-left: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .header-meta p { margin-bottom: 7px; }
+    .header-meta strong { color: var(--ink); font-weight: 600; }
+
+    .principles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      margin: 32px 0 0;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .principle {
+      padding: 20px 24px 22px;
+      background: var(--surface);
+    }
+
+    .principle h2 {
+      margin-bottom: 5px;
+      font-size: 17px;
+      font-weight: 650;
+    }
+
+    .principle p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 52px 0 0;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 24px;
+      margin-bottom: 22px;
+    }
+
+    .section-index {
+      padding-top: 7px;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+    }
+
+    h2 {
+      margin-bottom: 8px;
+      font-size: 28px;
+      line-height: 1.25;
+      font-weight: 650;
+    }
+
+    .section-summary {
+      max-width: 760px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .diagram-frame {
+      overflow-x: auto;
+      padding: 26px 20px 20px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+    }
+
+    .mermaid {
+      min-width: 760px;
+      text-align: center;
+    }
+
+    .diagram-frame svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .notes {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .note {
+      padding: 16px 18px 17px 0;
+    }
+
+    .note + .note {
+      padding-left: 18px;
+      border-left: 1px solid var(--line);
+    }
+
+    .note h3 {
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .note p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .term-list {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      margin: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .term-list dt, .term-list dd {
+      margin: 0;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .term-list dt {
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    .term-list dd { color: var(--muted); }
+
+    .footer {
+      margin-top: 46px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 720px) {
+      .page { width: min(100% - 28px, 1180px); padding-top: 28px; }
+      .document-header { grid-template-columns: 1fr; gap: 20px; }
+      h1 { font-size: 31px; }
+      .lede { font-size: 16px; }
+      .header-meta { padding-left: 0; border-left: 0; }
+      .principles { grid-template-columns: 1fr; }
+      .section { padding-top: 40px; }
+      .section-heading { grid-template-columns: 1fr; gap: 2px; }
+      h2 { font-size: 24px; }
+      .diagram-frame { padding: 18px 14px 14px; }
+      .notes { grid-template-columns: 1fr; }
+      .note { padding: 15px 0; }
+      .note + .note { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+      .term-list { grid-template-columns: 110px minmax(0, 1fr); gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="document-header">
+      <div>
+        <p class="eyebrow">SYSTEM ARCHITECTURE / MARKETING AGENT</p>
+        <h1>智能营销 Agent 系统</h1>
+        <p class="lede">以长期 Goal 为生命周期边界，通过用户主导的通用流与 Agent 主导的业务流并行协作，让营销工作既可被辅助完成，也可被持续推进。</p>
+      </div>
+      <aside class="header-meta" aria-label="文档信息">
+        <p><strong>视角</strong> 技术架构</p>
+        <p><strong>核心对象</strong> Goal</p>
+        <p><strong>运行范式</strong> 双流并发</p>
+        <p><strong>图例范围</strong> 能力与状态流</p>
+      </aside>
+    </header>
+
+    <section class="principles" aria-label="系统目的">
+      <article class="principle">
+        <h2>辅助人完成营销业务</h2>
+        <p>自然语言会话承接查询、理解、解释和人工介入，让用户始终能看见并影响正在推进的业务。</p>
+      </article>
+      <article class="principle">
+        <h2>代替人完成营销任务</h2>
+        <p>Agent 按业务目标主动编排与执行节点，只在需要决策、确认或异常处理时把控制权交还给用户。</p>
+      </article>
+    </section>
+
+    <section class="section" aria-labelledby="goal-heading">
+      <div class="section-heading">
+        <div class="section-index">01 / MODEL</div>
+        <div>
+          <h2 id="goal-heading">Goal：替代短会话的长期业务实体</h2>
+          <p class="section-summary">营销业务通常持续数周或数月，且同一成员会在多个业务中承担不同角色。系统以 Goal 而非一次性 Session 组织持续上下文、角色目标和多个阶段性任务。</p>
+        </div>
+      </div>
+
+      <div class="diagram-frame" aria-label="Goal 业务模型流程图">
+        <pre class="mermaid">
+graph TD
+  Member[营销团队成员] --> Role[业务角色]
+  Role --> Targets[业务目标 / 季度目标]
+  Targets --> Goal[Goal\n长期、独立、可分享、可调整]
+  Goal --> Context[Goal 上下文\n目标、约束、历史状态]
+  Goal --> TaskA[营销任务 A]
+  Goal --> TaskB[营销任务 B]
+  Goal --> TaskN[营销任务 N]
+  TaskA --> Update[阶段性结果与进度更新]
+  TaskB --> Update
+  TaskN --> Update
+  Update --> Goal
+  Goal --> Next[后续任务持续加入]
+  classDef goal fill:#e1f0ed,stroke:#0c6b62,color:#17212b,stroke-width:2px;
+  classDef task fill:#ffffff,stroke:#9baab2,color:#17212b;
+  class Goal,Context goal;
+  class Member,Role,Targets,TaskA,TaskB,TaskN,Update,Next task;
+        </pre>
+      </div>
+
+      <div class="notes">
+        <article class="note">
+          <h3>生命周期边界</h3>
+          <p>Goal 是长期、独立的业务目标实体；它承载持续状态，而非随着单次对话结束。</p>
+        </article>
+        <article class="note">
+          <h3>角色化目标</h3>
+          <p>目标从人员在具体业务中的角色出发，允许同一成员同时参与多个 Goal。</p>
+        </article>
+        <article class="note">
+          <h3>多任务并行</h3>
+          <p>一个 Goal 可以包含多个营销任务，任务的阶段性结果持续反哺 Goal 状态。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="dual-heading">
+      <div class="section-heading">
+        <div class="section-index">02 / RUNTIME</div>
+        <div>
+          <h2 id="dual-heading">双流 Agent：并发运行，双向协作</h2>
+          <p class="section-summary">两个流共存在同一个 Goal 生命周期中，互不阻塞。通用流由用户发起；业务流由 Agent 主动推进。两者通过工具和上下文注入实现状态同步与协作。</p>
+        </div>
+      </div>
+
+      <div class="diagram-frame" aria-label="双流 Agent 协作流程图">
+        <pre class="mermaid">
+graph TD
+  Goal[Goal 生命周期] --> Parallel[通用流与业务流\n并发共存、互不阻塞]
+  Parallel --> React
+  Parallel --> GraphExec
+
+  User[用户] --> React[通用流：ReAct Agent\n用户发起会话、查询、状态解析]
+  React --> Snapshot[业务图快照查询 Tool]
+  React --> Adjust[业务图调整 Tool]
+
+  GraphExec[业务流：Graph Execution\nAgent 主动推进、动态节点编排、任务执行]
+  GraphExec --> Status[业务图状态 / 节点结果 / 任务进度]
+  GraphExec --> Handoff{需要人工干预\n或确认？}
+  Handoff -->|是| User
+  Handoff -->|否| GraphExec
+
+  React -. 当前会话上下文注入 .-> GraphExec
+  Snapshot -. 查询当前图状态 .-> Status
+  Adjust -. 介入调整业务图 .-> GraphExec
+
+  classDef goal fill:#e1f0ed,stroke:#0c6b62,color:#17212b,stroke-width:2px;
+  classDef react fill:#e2f0f4,stroke:#15708c,color:#17212b;
+  classDef business fill:#f9e8da,stroke:#b65b22,color:#17212b;
+  class Goal goal;
+  class User,React,Snapshot,Adjust react;
+  class GraphExec,Status,Handoff business;
+        </pre>
+      </div>
+
+      <div class="notes">
+        <article class="note">
+          <h3>通用流</h3>
+          <p>负责用户可见、可控的自然语言交互，也提供对正在运行的业务图进行查询与调整的入口。</p>
+        </article>
+        <article class="note">
+          <h3>业务流</h3>
+          <p>将用户需求映射为动态节点编排，并主动执行营销任务；无需等待通用流完成才继续。</p>
+        </article>
+        <article class="note">
+          <h3>协作边界</h3>
+          <p>业务流每次加载上下文时都会引入当前通用流会话信息；关键决策再通过 handoff 交回用户。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="execution-heading">
+      <div class="section-heading">
+        <div class="section-index">03 / EXECUTION</div>
+        <div>
+          <h2 id="execution-heading">Graph Execution：从需求到持续推进的闭环</h2>
+          <p class="section-summary">业务流不是固定工作流。它根据当前营销需求选择、组合和编排已有节点，并将执行结果更新回任务与 Goal，使长期业务可以持续演进。</p>
+        </div>
+      </div>
+
+      <div class="diagram-frame" aria-label="Graph Execution 生命周期流程图">
+        <pre class="mermaid">
+graph TD
+  Need[营销需求 / 任务待办] --> Resolve[解析需求与当前任务状态]
+  Resolve --> Compose[选择并动态编排\n已有业务节点]
+  Compose --> Build[生成业务图]
+  Build --> Load[加载执行上下文]
+  GoalCtx[Goal 上下文] --> Load
+  ChatCtx[当前通用流会话上下文] --> Load
+  Load --> Run[执行当前节点]
+  Run --> State[发布节点状态与产出]
+  State --> Gate{是否需要\n人工干预或确认？}
+  Gate -->|需要| Handoff[Hand off 至通用流]
+  Handoff --> Human[用户确认 / 调整]
+  Human --> Replan[调整图或恢复执行]
+  Replan --> Run
+  Gate -->|不需要| Next{是否还有\n后续节点？}
+  Next -->|有| Run
+  Next -->|无| Update[更新任务阶段结果]
+  Update --> GoalUpdate[更新 Goal 状态与进度]
+  GoalUpdate --> FollowUp[等待或接收后续营销任务]
+
+  classDef source fill:#e1f0ed,stroke:#0c6b62,color:#17212b;
+  classDef action fill:#f9e8da,stroke:#b65b22,color:#17212b;
+  classDef handoff fill:#e2f0f4,stroke:#15708c,color:#17212b;
+  class GoalCtx,ChatCtx source;
+  class Resolve,Compose,Build,Load,Run,State,Gate,Next,Update,GoalUpdate,FollowUp action;
+  class Handoff,Human,Replan handoff;
+        </pre>
+      </div>
+
+      <div class="notes">
+        <article class="note">
+          <h3>动态编排</h3>
+          <p>业务图按当前需求构建，复用已有业务节点，而不是预先固化为单一营销流程。</p>
+        </article>
+        <article class="note">
+          <h3>上下文注入</h3>
+          <p>执行时同时读取 Goal 的长期状态和通用流的即时会话内容，避免两种信息孤立。</p>
+        </article>
+        <article class="note">
+          <h3>受控自治</h3>
+          <p>Agent 默认连续推进；当决策需要人的判断、确认或编辑时，才暂停并 handoff。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="collaboration-heading">
+      <div class="section-heading">
+        <div class="section-index">04 / COLLABORATION</div>
+        <div>
+          <h2 id="collaboration-heading">协作任务派发与验收：跨角色 handoff 闭环</h2>
+          <p class="section-summary">一个营销任务图可能包含多个专业环节。当当前节点需要其他角色参与时，系统在协作卡片中指派阶段任务：fork 当前 Goal 与任务状态，携带阶段上下文派发给协作者，并通过飞书完成触达。</p>
+        </div>
+      </div>
+
+      <div class="diagram-frame" aria-label="协作任务派发与验收流程图">
+        <pre class="mermaid">
+graph TD
+  Current[当前营销任务图] --> Need{当前阶段需要\n其他角色协作？}
+  Need -->|否| Continue[继续执行当前任务图]
+  Need -->|是| Card[协作卡片\n选择协作者、任务要求、验收标准]
+  Card --> Fork[Fork 当前 Goal 与任务状态]
+  Fork --> Package[携带当前阶段上下文\n目标、任务状态、输入、约束]
+  Package --> Dispatch[创建协作任务并指派给协作者]
+  Dispatch --> Feishu[飞书提醒]
+  Feishu --> Collaborator[协作者接收任务]
+  Collaborator --> Work[进入系统完成协作任务]
+  Work --> Return[完成后 handoff 回派发者]
+  Return --> Accept{派发者验收通过？}
+  Accept -->|是| Update[更新当前任务阶段状态]
+  Update --> Continue
+  Accept -->|否| ReDispatch[补充反馈并二次派发]
+  ReDispatch --> Dispatch
+
+  classDef source fill:#e1f0ed,stroke:#0c6b62,color:#17212b;
+  classDef action fill:#f9e8da,stroke:#b65b22,color:#17212b;
+  classDef human fill:#e2f0f4,stroke:#15708c,color:#17212b;
+  class Current,Need,Continue,Update source;
+  class Card,Fork,Package,Dispatch,Accept,ReDispatch action;
+  class Feishu,Collaborator,Work,Return human;
+        </pre>
+      </div>
+
+      <div class="notes">
+        <article class="note">
+          <h3>状态隔离</h3>
+          <p>Fork 让协作者获得当前阶段所需的 Goal 与任务快照，同时保留原任务图作为主流程的持续边界。</p>
+        </article>
+        <article class="note">
+          <h3>协作触达</h3>
+          <p>协作卡片定义任务指派人与协作者、阶段上下文和验收标准；飞书只承担外部提醒与到达入口。</p>
+        </article>
+        <article class="note">
+          <h3>验收回路</h3>
+          <p>协作者完成任务后 handoff 回派发者验收；不符合要求时携带反馈二次派发，直到阶段状态可更新。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="foundation-heading">
+      <div class="section-heading">
+        <div class="section-index">05 / FOUNDATION</div>
+        <div>
+          <h2 id="foundation-heading">系统基础能力层：让状态、交互和知识可见可用</h2>
+          <p class="section-summary">基础能力不直接替代营销业务流，而是为所有 Goal、任务和协作节点提供统一的交互载体、状态呈现、阶段产物管理和知识上下文能力。</p>
+        </div>
+      </div>
+
+      <div class="diagram-frame" aria-label="系统基础能力关系图">
+        <pre class="mermaid">
+graph TD
+  Runtime[Goal + 双流 Agent + 任务 Graph] --> Foundation[系统基础能力层]
+  Foundation --> Cards[卡片类型与交互\n展示、操作、确认、指派、验收]
+  Foundation --> GoalView[Goal 状态显示\n目标进度、健康度、阶段、待办]
+  Foundation --> GraphView[任务 Graph 进展与状态\n节点状态、依赖、阻塞、执行轨迹]
+  Foundation --> Artifact[阶段产物展示\n文档、数据、结论、审批结果]
+  Foundation --> Knowledge[知识库沉淀与检索装载\n沉淀经验、索引检索、上下文注入]
+
+  Cards --> UserAction[用户操作 / Agent 触发]
+  GoalView --> Decision[判断下一步与是否需要介入]
+  GraphView --> Decision
+  Artifact --> Knowledge
+  Knowledge --> Context[装载到通用流、业务流和协作任务上下文]
+  Context --> Runtime
+  UserAction --> Runtime
+
+  classDef runtime fill:#e1f0ed,stroke:#0c6b62,color:#17212b,stroke-width:2px;
+  classDef foundation fill:#f9e8da,stroke:#b65b22,color:#17212b,stroke-width:2px;
+  classDef capability fill:#e2f0f4,stroke:#15708c,color:#17212b;
+  class Runtime,Context runtime;
+  class Foundation foundation;
+  class Cards,GoalView,GraphView,Artifact,Knowledge,UserAction,Decision capability;
+        </pre>
+      </div>
+
+      <div class="notes">
+        <article class="note">
+          <h3>卡片类型与交互</h3>
+          <p>提供统一的卡片协议与渲染能力，覆盖信息展示、操作确认、任务指派、协作验收等交互形态，让 Agent 输出可以被执行。</p>
+        </article>
+        <article class="note">
+          <h3>状态可观测</h3>
+          <p>Goal 视图表达长期目标状态；任务 Graph 视图表达节点进展、依赖、阻塞与执行轨迹，两者共同支撑下一步决策。</p>
+        </article>
+        <article class="note">
+          <h3>产物与知识</h3>
+          <p>阶段产物作为任务结果被展示、引用和沉淀；知识库负责索引、检索并将相关内容装载回各类 Agent 上下文。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="terms-heading">
+      <div class="section-heading">
+        <div class="section-index">06 / TERMS</div>
+        <div>
+          <h2 id="terms-heading">关键术语与系统边界</h2>
+          <p class="section-summary">本图描述系统能力、实体和状态关系，不假设具体模型、存储、编排引擎或业务节点实现。</p>
+        </div>
+      </div>
+
+      <dl class="term-list">
+        <dt>Goal</dt>
+        <dd>营销业务的长期目标实体，包含目标约束、持续上下文与阶段性进度；可分享、可调整，并可关联多个任务。</dd>
+        <dt>通用流</dt>
+        <dd>以 ReAct Agent 为核心的用户交互流，处理会话、查询、状态解析，以及对业务图的可见性和干预。</dd>
+        <dt>业务流</dt>
+        <dd>以 Graph Execution 为核心的自主执行流，负责依据需求编排节点、推进任务、发布状态，并在必要时 handoff。</dd>
+        <dt>业务图</dt>
+        <dd>由当前需求动态组合出的业务节点执行结构；用户可以经由通用流查询快照或调整其编排。</dd>
+        <dt>Hand off</dt>
+        <dd>业务流将需要判断、确认或编辑的控制点交回用户的机制；完成处理后，执行可继续恢复。</dd>
+        <dt>Fork</dt>
+        <dd>从当前 Goal 与任务状态派生协作任务快照，携带阶段上下文交给其他角色执行，并在验收后回写主任务阶段。</dd>
+        <dt>协作卡片</dt>
+        <dd>承载协作者、当前阶段要求、输入上下文和验收标准的任务指派载体，支持反馈后的二次派发。</dd>
+        <dt>基础能力层</dt>
+        <dd>横向支撑所有 Goal 与任务执行的能力集合，负责卡片交互、状态可视化、阶段产物管理以及知识沉淀与上下文装载。</dd>
+      </dl>
+    </section>
+
+    <footer class="footer">智能营销 Agent 系统架构图 · 技术视角 · 以 Goal 为长期业务生命周期边界</footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      securityLevel: 'strict',
+      theme: 'base',
+      themeVariables: {
+        fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Microsoft YaHei, sans-serif',
+        primaryColor: '#ffffff',
+        primaryTextColor: '#17212b',
+        primaryBorderColor: '#9baab2',
+        lineColor: '#75858d',
+        secondaryColor: '#e2f0f4',
+        tertiaryColor: '#f9e8da',
+        clusterBkg: '#fbfcfc',
+        clusterBorder: '#b8c5ca',
+        edgeLabelBackground: '#f7faf9'
+      },
+      flowchart: {
+        curve: 'basis',
+        htmlLabels: true,
+        nodeSpacing: 28,
+        rankSpacing: 42,
+        padding: 12
+      }
+    });
+  </script>
+</body>
+</html>
