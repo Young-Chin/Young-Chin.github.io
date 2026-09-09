@@ -27,6 +27,7 @@ redirect_from:
           <a href="https://x.com/Young_Chin_Bob" class="notion-social-icon" title="X" target="_blank" rel="noopener">
             <i class="fab fa-twitter"></i>
           </a>
+          <button class="notion-button" type="button" onclick="openCvModal()">View CV</button>
         </div>
         <div class="notion-hero-body">
           <p>Currently seeking opportunities in multimodal and omni models, AI agents, and AIGC.</p>
@@ -191,13 +192,6 @@ redirect_from:
     <p class="notion-section-link">
       <a href="{{ base_path }}/year-archive/" class="notion-link">View all posts →</a>
     </p>
-  </section>
-
-  <!-- CV Section -->
-  <section class="notion-section reveal">
-    <h2 class="notion-h2">Curriculum Vitae</h2>
-    <p class="notion-text" style="margin-bottom: 1em;">A quick overview of my education and professional experience.</p>
-    <button class="notion-button" onclick="openCvModal()">View CV</button>
   </section>
 
   <!-- Footer -->
