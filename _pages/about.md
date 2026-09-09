@@ -15,9 +15,9 @@ redirect_from:
   <section class="notion-section notion-hero reveal">
     <div class="notion-columns">
       <div class="notion-column">
-        <h1 class="notion-hero-title" dir="auto">Young Chin|Bob|秦洋</h1>
+        <h1 class="notion-hero-title" dir="auto">Young Chin | Bob | 秦洋</h1>
         <div class="notion-hero-social">
-          <p class="notion-hero-location">SZ/GZ China</p>
+          <p class="notion-hero-location">SZ, China</p>
           <a href="mailto:yangqinbob@gmail.com" class="notion-social-icon" title="Email" target="_blank" rel="noopener">
             <i class="fas fa-envelope"></i>
           </a>
@@ -29,8 +29,9 @@ redirect_from:
           </a>
         </div>
         <div class="notion-hero-body">
-          <p>Currently a Senior AI Engineer in <a href="https://www.quwangroup.com" class="notion-link">Quwan</a>, focusing on Multimodality and AI Agent.</p>
-          <p>Previously at <a href="https://www.magiclight.ai" class="notion-link">MagicLight</a>, working on AIGC (text, image, video) for long story video generation.</p>
+          <p>Currently seeking opportunities in multimodal and omni models, AI agents, and AIGC.</p>
+          <p>Previously spent one year as a Senior Engineer at <a href="https://www.quwangroup.com" class="notion-link">Quwan Technology</a> in Guangzhou, focusing on multimodal understanding and AI agent systems.</p>
+          <p>Started my career at <a href="https://www.magiclight.ai" class="notion-link">MagicLight</a>, working on AIGC for long-form story video generation.</p>
         </div>
       </div>
       <div class="notion-column notion-column-shrink">
@@ -48,9 +49,10 @@ redirect_from:
       <div class="notion-expertise-card reveal">
         <h3 class="notion-expertise-card-title">Multimodality</h3>
         <ul class="notion-expertise-card-list">
-          <li>Vision Language Model</li>
+          <li>Vision-Language and Omni Models</li>
           <li>VLM-based OCR</li>
           <li>Multimodal Speaker Diarization</li>
+          <li>Long Video Understanding</li>
         </ul>
       </div>
       <div class="notion-expertise-card reveal">
@@ -58,7 +60,15 @@ redirect_from:
         <ul class="notion-expertise-card-list">
           <li>ID Preserving & Face Swap</li>
           <li>Regional Controlled Generation</li>
-          <li>Subject-Consistent Video Gen</li>
+          <li>Subject-Consistent Video Generation</li>
+        </ul>
+      </div>
+      <div class="notion-expertise-card reveal">
+        <h3 class="notion-expertise-card-title">AI Agents</h3>
+        <ul class="notion-expertise-card-list">
+          <li>Agent Frameworks</li>
+          <li>Memory Systems</li>
+          <li>Personality and User Modeling</li>
         </ul>
       </div>
       <div class="notion-expertise-card reveal">
@@ -66,13 +76,6 @@ redirect_from:
         <ul class="notion-expertise-card-list">
           <li>Multimedia Forensics</li>
           <li>Deepfake Detection</li>
-        </ul>
-      </div>
-      <div class="notion-expertise-card reveal">
-        <h3 class="notion-expertise-card-title">Smart City</h3>
-        <ul class="notion-expertise-card-list">
-          <li>Urban Data Analytics</li>
-          <li>IoT Applications</li>
         </ul>
       </div>
     </div>
@@ -122,7 +125,17 @@ redirect_from:
         {% assign card_motif = 'motif-frame' %}
         {% assign card_label = 'Notes' %}
         {% assign short_title = post.title %}
-        {% if post.title contains '05/24' %}
+        {% if post.title contains '智能营销' or post.title contains 'Marketing Agent' %}
+          {% assign card_palette = 'palette-clay' %}
+          {% assign card_motif = 'motif-arc' %}
+          {% assign card_label = 'Agent' %}
+          {% assign short_title = 'Smart Marketing Agent' %}
+        {% elsif post.title contains '字幕 OCR' or post.title contains 'Subtitle OCR' %}
+          {% assign card_palette = 'palette-rose' %}
+          {% assign card_motif = 'motif-lens' %}
+          {% assign card_label = 'OCR' %}
+          {% assign short_title = 'Video Subtitle OCR' %}
+        {% elsif post.title contains '05/24' %}
           {% assign card_palette = 'palette-sky' %}
           {% assign card_motif = 'motif-orbit' %}
           {% assign card_label = 'AIGC' %}
@@ -183,7 +196,7 @@ redirect_from:
   <!-- CV Section -->
   <section class="notion-section reveal">
     <h2 class="notion-h2">Curriculum Vitae</h2>
-    <p class="notion-text" style="margin-bottom: 1em;">A quick overview of my education and experience</p>
+    <p class="notion-text" style="margin-bottom: 1em;">A quick overview of my education and professional experience.</p>
     <button class="notion-button" onclick="openCvModal()">View CV</button>
   </section>
 
@@ -214,24 +227,27 @@ redirect_from:
 
       <div class="notion-cv-section">
         <h3>Experience</h3>
-        <p><strong>Senior Engineer</strong> · AllVoiceLab, Quwan Technology · Sep 2025 – Present</p>
+        <p><strong>Senior Engineer</strong> · AllVoiceLab, Quwan Technology · Sep 2025 – Aug 2026</p>
         <ul>
-          <li>Focus on multimodal understanding and editing of film and television dramas (text, speech, vision).</li>
+          <li>Developed multimodal solutions for video translation across text, speech, and vision.</li>
+          <li>Designed AI agent systems, including agent workflows and memory systems.</li>
         </ul>
 
         <p><strong>AI Engineer</strong> · MagicLight · Jun 2024 – Aug 2025</p>
         <ul>
-          <li>Built AIGC platform for long story video generation (text / image / video).</li>
+          <li>Built an AIGC platform for long-form story video generation across text, image, and video.</li>
+          <li>Worked on identity-preserving and regional-controlled image generation, as well as pose-controlled generation.</li>
+          <li>Developed prompt-engineering workflows for scripts and image-to-video models.</li>
         </ul>
 
         <p><strong>AI Intern</strong> · AFS Ltd., Digital AI Group · Feb 2024 – May 2024</p>
         <ul>
-          <li>Human Portrait Generation and Pose-driven Video Generation.</li>
+          <li>Worked on human portrait generation and pose-driven video generation.</li>
         </ul>
 
         <p><strong>Research Intern</strong> · Zhuhai UM Research Institute · 2022 – 2023</p>
         <ul>
-          <li>Synthetic Image Detection, Advanced AIGC Technology, and AI Security.</li>
+          <li>Researched synthetic image detection, advanced AIGC technology, and AI security.</li>
         </ul>
       </div>
     </div>
